@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Nexus Booster - Oficial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-green: #39FF14;
+            --black: #050505;
+            --dark-gray: #111111;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Rajdhani', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 20px 60px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5,5,5,0.98);
+            border-bottom: 2px solid var(--neon-green);
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex; align-items: center; gap: 15px;
+        }
+
+        .logo img { height: 50px; width: auto; }
+
+        .logo h2 {
+            font-family: 'Orbitron', sans-serif; font-size: 18px; font-weight: 900;
+            color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        nav { display: flex; gap: 40px; }
+        nav a {
+            color: var(--white); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 2px; font-weight: 600; transition: all 0.3s;
+        }
+        nav a:hover { color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green); }
+
+        .back-btn {
+            background: var(--neon-green); color: var(--black);
+            padding: 12px 25px; border: none; border-radius: 8px;
+            font-family: 'Orbitron', sans-serif; font-size: 12px; font-weight: 700;
+            letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover { box-shadow: 0 0 30px rgba(57, 255, 20, 0.6); transform: scale(1.05); }
+
+        .download-container {
+            padding: 150px 60px 100px;
+            max-width: 1200px; margin: 0 auto;
+        }
+
+        .download-header { text-align: center; margin-bottom: 60px; }
+        .download-header h1 {
+            font-family: 'Orbitron', sans-serif; font-size: 42px; font-weight: 900;
+            color: var(--white); margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+        }
+        .download-header p { color: rgba(255, 255, 255, 0.7); font-size: 18px; }
+
+        .download-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px; margin-bottom: 60px;
+        }
+
+        .download-card {
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.95), rgba(5, 5, 5, 0.95));
+            border: 2px solid rgba(57, 255, 20, 0.3); border-radius: 20px;
+            padding: 40px; transition: all 0.3s ease;
+        }
+        .download-card:hover {
+            border-color: var(--neon-green); box-shadow: 0 0 40px rgba(57, 255, 20, 0.3);
+            transform: translateY(-5px);
+        }
+        .download-card.popular { border-color: var(--neon-green); }
+        .popular-badge {
+            background: var(--neon-green); color: var(--black); font-weight: 800;
+            padding: 5px 20px; border-radius: 20px;
+            font-family: 'Orbitron', sans-serif; font-size: 11px; text-transform: uppercase;
+            letter-spacing: 2px; margin-bottom: 20px; display: inline-block;
+        }
+        .download-card h3 {
+            font-family: 'Orbitron', sans-serif; font-size: 24px; margin-bottom: 10px;
+        }
+        .download-card .plan-price {
+            font-family: 'Orbitron', sans-serif; font-size: 36px; color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green); margin-bottom: 25px;
+        }
+        .download-card ul { list-style: none; margin-bottom: 30px; }
+        .download-card li {
+            padding: 10px 0; border-bottom: 1px solid rgba(57, 255, 20, 0.1);
+            color: rgba(255, 255, 255, 0.8); display: flex; align-items: center; gap: 10px;
+        }
+        .download-card li::before { content: '✓'; color: var(--neon-green); font-weight: bold; }
+        .download-btn-main {
+            width: 100%; padding: 18px; background: var(--neon-green); border: none;
+            border-radius: 12px; font-family: 'Orbitron', sans-serif; font-size: 14px;
+            font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--black); cursor: pointer; transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+        }
+        .download-btn-main:hover {
+            transform: scale(1.02); box-shadow: 0 0 40px rgba(57, 255, 20, 0.7);
+        }
+        .download-btn-main:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .stats-container {
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.95), rgba(5, 5, 5, 0.95));
+            border: 2px solid rgba(57, 255, 20, 0.3); border-radius: 20px; padding: 40px;
+        }
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        .stat-box { text-align: center; }
+        .stat-number {
+            font-family: 'Orbitron', sans-serif; font-size: 36px; color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green); margin-bottom: 10px;
+        }
+        .stat-label { color: rgba(255,255,255,0.6); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @media (max-width: 768px) {
+            header { padding: 20px; }
+            .download-container { padding: 120px 20px 60px; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logonexususar.png" alt="Logo Nexus Booster">
+            <h2>NEXUS BOOSTER</h2>
+        </div>
+        <nav>
+            <a href="index.html#features">Recursos</a>
+            <a href="index.html#pricing">Planos</a>
+            <a href="index.html#faq">FAQ</a>
+        </nav>
+        <button class="back-btn" onclick="window.location.href='index.html'">Voltar</button>
+    </header>
+
+    <div class="download-container">
+        <div class="download-header">
+            <h1>Central de Downloads Nexus Booster</h1>
+            <p>Selecione a versão que melhor se adapta às suas necessidades</p>
+        </div>
+
+        <div class="download-grid">
+            <div class="download-card">
+                <h3>Nexus Booster - Básico</h3>
+                <div class="plan-price">R$ 5,99/mês</div>
+                <ul>
+                    <li>Otimização básica para jogos</li>
+                    <li>30 dias grátis sem cartão</li>
+                    <li>Suporte por email</li>
+                    <li>Atualizações automáticas</li>
+                </ul>
+                <button class="download-btn-main" data-version="basico">
+                    Baixar Básico
+                </button>
+            </div>
+
+            <div class="download-card popular">
+                <span class="popular-badge">Mais Popular</span>
+                <h3>Nexus Booster - Pro</h3>
+                <div class="plan-price">R$ 19,90/mês</div>
+                <ul>
+                    <li>Tudo do plano Básico</li>
+                    <li>Otimização avançada</li>
+                    <li>Suporte prioritário</li>
+                    <li>Recursos exclusivos</li>
+                </ul>
+                <button class="download-btn-main" data-version="pro">
+                    Baixar Pro
+                </button>
+            </div>
+
+            <div class="download-card">
+                <h3>Nexus Booster - Elite</h3>
+                <div class="plan-price">R$ 49,90/mês</div>
+                <ul>
+                    <li>Tudo do plano Pro</li>
+                    <li>Acesso antecipado</li>
+                    <li>Suporte 24h</li>
+                    <li>Recursos premium</li>
+                </ul>
+                <button class="download-btn-main" data-version="elite">
+                    Baixar Elite
+                </button>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <h2 style="font-family: 'Orbitron', sans-serif; color: var(--white); margin-bottom: 30px; text-align: center;">Estatísticas</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number" id="totalClicks">0</div>
+                    <div class="stat-label">Cliques nos Botões</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="downloadsStarted">0</div>
+                    <div class="stat-label">Downloads Iniciados</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="downloadsCompleted">0</div>
+                    <div class="stat-label">Downloads Concluídos</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateStats() {
+            const stats = JSON.parse(localStorage.getItem('nexusStats') || JSON.stringify({
+                totalClicks: 0, downloadsStarted: 0, downloadsCompleted: 0
+            }));
+            document.getElementById('totalClicks').textContent = stats.totalClicks;
+            document.getElementById('downloadsStarted').textContent = stats.downloadsStarted;
+            document.getElementById('downloadsCompleted').textContent = stats.downloadsCompleted;
+        }
+
+        function recordClick(version) {
+            const stats = JSON.parse(localStorage.getItem('nexusStats') || JSON.stringify({
+                totalClicks: 0, downloadsStarted: 0, downloadsCompleted: 0
+            }));
+            stats.totalClicks++;
+            localStorage.setItem('nexusStats', JSON.stringify(stats));
+            updateStats();
+        }
+
+        function startDownload(version) {
+            recordClick(version);
+            const stats = JSON.parse(localStorage.getItem('nexusStats') || JSON.stringify({
+                totalClicks: 0, downloadsStarted: 0, downloadsCompleted: 0
+            }));
+            stats.downloadsStarted++;
+            localStorage.setItem('nexusStats', JSON.stringify(stats));
+            updateStats();
+            setTimeout(() => {
+                const updatedStats = JSON.parse(localStorage.getItem('nexusStats') || JSON.stringify({
+                    totalClicks: 0, downloadsStarted: 0, downloadsCompleted: 0
+                }));
+                updatedStats.downloadsCompleted++;
+                localStorage.setItem('nexusStats', JSON.stringify(updatedStats));
+                updateStats();
+                alert('Download do Nexus Booster ' + version + ' iniciado!');
+            }, 1500);
+        }
+
+        document.querySelectorAll('.download-btn-main').forEach(btn => {
+            btn.addEventListener('click', function() {
+                startDownload(this.getAttribute('data-version'));
+            });
+        });
+
+        updateStats();
+    </script>
+</body>
+</html>

@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus-Booster | Optimize Your Power</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Nexus Booster - Mais FPS. Menos Lag. Vitória Garantida.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --neon-green: #39ff14;
-            --dark-bg: #0a0a0a;
-            --darker-bg: #050505;
+            --neon-green: #39FF14;
+            --black: #050505;
+            --dark-gray: #111111;
+            --white: #FFFFFF;
+            --gold: #FFD700;
         }
 
         * {
@@ -18,295 +20,4763 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            margin: 0;
-            background-color: var(--dark-bg);
-            color: var(--neon-green);
-            font-family: 'Orbitron', 'Courier New', Courier, monospace;
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Rajdhani', sans-serif;
             overflow-x: hidden;
-            min-height: 100vh;
         }
 
-        /* Animação das estrelas */
-        .stars {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .star {
-            position: absolute;
-            background: var(--neon-green);
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: twinkle 3s infinite ease-in-out;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.5); opacity: 0.8; }
-        }
-
-        /* Grid background */
-        .grid-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(57, 255, 20, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(57, 255, 20, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* UI Principal */
-        .container {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 40px 60px;
-        }
-
-        /* Logo */
-        .logo-container {
-            display: flex;
-            align-items: baseline;
-            margin-bottom: 40px;
-        }
-
-        .nexus {
-            font-size: 6rem;
-            font-weight: 900;
-            color: var(--neon-green);
-            text-shadow: 
-                0 0 5px var(--neon-green),
-                0 0 10px var(--neon-green),
-                0 0 20px var(--neon-green),
-                0 0 40px var(--neon-green);
-            animation: pulse-neon 2s ease-in-out infinite;
-        }
-
-        .booster {
-            font-size: 6rem;
-            font-weight: 900;
-            color: transparent;
-            -webkit-text-stroke: 2px var(--neon-green);
-            text-shadow: 
-                0 0 5px var(--neon-green),
-                0 0 10px var(--neon-green),
-                0 0 20px var(--neon-green);
-            margin-left: 15px;
-            animation: pulse-neon 2s ease-in-out infinite;
-            animation-delay: 0.5s;
-        }
-
-        @keyframes pulse-neon {
-            0%, 100% { 
-                text-shadow: 
-                    0 0 5px var(--neon-green),
-                    0 0 10px var(--neon-green),
-                    0 0 20px var(--neon-green),
-                    0 0 40px var(--neon-green);
-            }
-            50% { 
-                text-shadow: 
-                    0 0 10px var(--neon-green),
-                    0 0 20px var(--neon-green),
-                    0 0 40px var(--neon-green),
-                    0 0 80px var(--neon-green);
-            }
-        }
-
-        /* Subtitle */
-        .subtitle {
-            font-size: 1.5rem;
-            color: rgba(57, 255, 20, 0.8);
-            margin-bottom: 50px;
-            letter-spacing: 3px;
-        }
-
-        /* Features */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 900px;
-            margin-bottom: 50px;
-        }
-
-        .feature-card {
-            background: rgba(57, 255, 20, 0.05);
-            border: 1px solid rgba(57, 255, 20, 0.3);
-            padding: 25px;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            background: rgba(57, 255, 20, 0.1);
-            border-color: var(--neon-green);
-            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
-        }
-
-        .feature-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .feature-card p {
-            font-size: 0.9rem;
-            color: rgba(57, 255, 20, 0.7);
-            font-family: 'Courier New', monospace;
-        }
-
-        /* Button */
-        .button-container {
-            display: flex;
-            gap: 20px;
-        }
-
-        button {
-            background: transparent;
-            border: 2px solid var(--neon-green);
-            color: var(--neon-green);
-            padding: 18px 45px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            text-transform: uppercase;
-            font-family: 'Orbitron', monospace;
-            letter-spacing: 2px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        button:hover {
-            background: var(--neon-green);
-            color: black;
-            box-shadow: 0 0 30px var(--neon-green);
-        }
-
-        button.secondary {
-            border-color: rgba(57, 255, 20, 0.5);
-            color: rgba(57, 255, 20, 0.8);
-        }
-
-        button.secondary:hover {
-            border-color: var(--neon-green);
-            color: var(--neon-green);
-            background: transparent;
-            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
-        }
-
-        /* Stats */
-        .stats {
-            display: flex;
-            gap: 60px;
-            margin-top: 50px;
-        }
-
-        .stat-item {
-            text-align: left;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 900;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: rgba(57, 255, 20, 0.6);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Scanline effect */
-        .scanlines {
+        /* Particles Background */
+        .particles {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 9999;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--neon-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+        }
+
+        /* Grid Background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(57, 255, 20, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(57, 255, 20, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+            animation: grid-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes grid-pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Scanlines */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: repeating-linear-gradient(
                 0deg,
-                rgba(0, 0, 0, 0.1),
-                rgba(0, 0, 0, 0.1) 1px,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
                 transparent 1px,
                 transparent 2px
             );
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(5,5,5,0.98);
+            border-bottom: 2px solid var(--neon-green);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 200px;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo-icon:hover {
+            transform: scale(1.05);
+        }
+
+        /* Admin Modal */
+        .admin-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .admin-modal {
+            background: linear-gradient(135deg, rgba(17,17,17,0.95) 0%, rgba(5,5,5,0.95) 100%);
+            border: 2px solid rgba(57, 255, 20, 0.5);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(57, 255, 20, 0.3);
+            max-width: 400px;
+            width: 90%;
+            animation: slideIn 0.3s ease;
+        }
+
+        .admin-modal h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-green);
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .admin-modal input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(57, 255, 20, 0.05);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            color: var(--white);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .admin-modal input:focus {
+            outline: none;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+        }
+
+        .admin-modal button {
+            width: 100%;
+            padding: 15px;
+            background: var(--neon-green);
+            color: var(--black);
+            border: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+        }
+
+        .admin-modal button:hover {
+            box-shadow: 0 0 40px rgba(57, 255, 20, 0.6);
+            transform: scale(1.02);
+        }
+
+        /* Admin Dashboard */
+        .admin-dashboard {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            display: none;
+            z-index: 9999;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .admin-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(17,17,17,0.98) 0%, rgba(5,5,5,0.98) 100%);
+            border-right: 2px solid rgba(57, 255, 20, 0.3);
+            padding: 30px 20px;
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.1);
+        }
+
+        .admin-sidebar h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-green);
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 0 0 15px var(--neon-green);
+        }
+
+        .admin-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .admin-sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .admin-sidebar a {
+            display: block;
+            padding: 12px 20px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .admin-sidebar a:hover, .admin-sidebar a.active {
+            background: rgba(57, 255, 20, 0.1);
+            color: var(--neon-green);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+        }
+
+        .admin-content {
+            margin-left: 250px;
+            padding: 30px;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+        }
+
+        .admin-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--white);
+            font-size: 28px;
+        }
+
+        .admin-logout {
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff6666;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            padding: 10px 25px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .admin-logout:hover {
+            background: rgba(255, 0, 0, 0.2);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(17,17,17,0.95) 0%, rgba(5,5,5,0.95) 100%);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+        }
+
+        .stat-card h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            color: var(--neon-green);
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px var(--neon-green);
+        }
+
+        .stat-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 15px 20px;
+            background: rgba(57, 255, 20, 0.05);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            color: var(--white);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+        }
+
+        /* Users Table */
+        .users-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: linear-gradient(135deg, rgba(17,17,17,0.95) 0%, rgba(5,5,5,0.95) 100%);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+        }
+
+        .users-table th, .users-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+        }
+
+        .users-table th {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--neon-green);
+            background: rgba(57, 255, 20, 0.05);
+        }
+
+        .users-table td {
+            color: rgba(255, 255, 255, 0.8);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 14px;
+        }
+
+        .users-table tr:hover {
+            background: rgba(57, 255, 20, 0.05);
+            cursor: pointer;
+        }
+
+        /* User Details */
+        .user-details {
+            background: linear-gradient(135deg, rgba(17,17,17,0.95) 0%, rgba(5,5,5,0.95) 100%);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .user-details h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-green);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        .user-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .user-detail-item p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .user-detail-item h4 {
+            color: var(--white);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 18px;
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .user-actions button {
+            padding: 10px 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid;
+            background: transparent;
+        }
+
+        .btn-suspend {
+            color: #ff6666;
+            border-color: #ff6666;
+        }
+
+        .btn-suspend:hover {
+            background: rgba(255, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .btn-activate {
+            color: var(--neon-green);
+            border-color: var(--neon-green);
+        }
+
+        .btn-activate:hover {
+            background: rgba(57, 255, 20, 0.1);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+        }
+
+        .small-btn {
+            padding: 5px 10px;
+            font-size: 11px;
+        }
+
+        /* Google OAuth Simulation */
+        .google-oauth-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+            animation: fadeIn 0.2s ease;
+        }
+        
+        .google-oauth-modal {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 380px;
+            overflow: hidden;
+        }
+        
+        .google-oauth-header {
+            padding: 30px 20px 20px;
+            text-align: center;
+        }
+        
+        .google-oauth-header h3 {
+            color: #202124;
+            font-family: 'Arial', sans-serif;
+            font-size: 24px;
+            font-weight: normal;
+            margin: 10px 0 5px;
+        }
+        
+        .google-oauth-header p {
+            color: #5f6368;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+        }
+        
+        .google-oauth-accounts {
+            padding: 0 20px 30px;
+        }
+        
+        .google-oauth-account {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 1px solid #dadce0;
+            transition: all 0.2s ease;
+        }
+        
+        .google-oauth-account:hover {
+            background: #f1f3f4;
+        }
+        
+        .google-account-avatar {
+            width: 40px;
+            height: 40px;
+            background: #e8f0fe;
+            color: #1a73e8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+        
+        .google-account-info h4 {
+            color: #202124;
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        .google-account-info p {
+            color: #5f6368;
+            font-family: 'Arial', sans-serif;
+            font-size: 13px;
+            margin: 2px 0 0 0;
+        }
+        
+        /* Nexus AI Chat */
+        .chat-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.7);
+        }
+
+        .chat-icon {
+            font-size: 28px;
+        }
+
+        .chat-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 380px;
+            height: 550px;
+            background: var(--black);
+            border: 2px solid rgba(57, 255, 20, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.3);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.95) 0%, rgba(5, 5, 5, 0.95) 100%);
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-radius: 13px 13px 0 0;
+        }
+
+        .chat-avatar {
+            width: 45px;
+            height: 45px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--black);
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+        }
+
+        .chat-header-info h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            color: var(--white);
+            margin: 0;
+        }
+
+        .chat-status {
+            color: var(--neon-green);
+            font-size: 13px;
+        }
+
+        .chat-close {
+            margin-left: auto;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 28px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .chat-close:hover {
+            color: var(--white);
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: rgba(57, 255, 20, 0.05);
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: rgba(57, 255, 20, 0.3);
+            border-radius: 3px;
+        }
+
+        .message {
+            display: flex;
+            gap: 10px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .user-message {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 35px;
+            height: 35px;
+            background: rgba(57, 255, 20, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--neon-green);
+            flex-shrink: 0;
+        }
+
+        .user-message .message-avatar {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+        }
+
+        .message-content {
+            background: rgba(57, 255, 20, 0.1);
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(57, 255, 20, 0.2);
+            max-width: 75%;
+        }
+
+        .user-message .message-content {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .message-content p {
+            margin: 5px 0;
+            color: var(--white);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .user-message .message-content p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 15px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .quick-buttons {
+            padding: 10px 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-top: 1px solid rgba(57, 255, 20, 0.2);
+        }
+
+        .quick-btn {
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            color: var(--white);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quick-btn:hover {
+            background: rgba(57, 255, 20, 0.2);
+            border-color: var(--neon-green);
+        }
+
+        .chat-input-area {
+            padding: 15px;
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid rgba(57, 255, 20, 0.2);
+        }
+
+        #chatInput {
+            flex: 1;
+            background: rgba(57, 255, 20, 0.05);
+            border: 1px solid rgba(57, 255, 20, 0.2);
+            color: var(--white);
+            padding: 12px 15px;
+            border-radius: 25px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        #chatInput:focus {
+            outline: none;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+        }
+
+        #chatSend {
+            background: var(--neon-green);
+            border: none;
+            color: var(--black);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+        }
+
+        #chatSend:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+        }
+        
+        /* Auth Modal */
+        .auth-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .auth-modal {
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.98) 0%, rgba(5, 5, 5, 0.98) 100%);
+            border: 2px solid rgba(57, 255, 20, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 0 40px rgba(57, 255, 20, 0.2);
+            position: relative;
+            animation: slideUp 0.4s ease;
+        }
+        
+        .auth-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 30px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .auth-close:hover {
+            color: var(--neon-green);
+        }
+        
+        .auth-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .auth-logo img {
+            width: 120px;
+            height: auto;
+        }
+        
+        .auth-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--white);
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .auth-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .google-btn {
+            width: 100%;
+            padding: 15px;
+            background: white;
+            color: #333;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .google-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+        }
+        
+        .auth-divider::before,
+        .auth-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+        }
+        
+        .auth-divider span {
+            padding: 0 15px;
+        }
+        
+        .auth-input-group {
+            margin-bottom: 20px;
+        }
+        
+        .auth-input-group label {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .auth-input-group input {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(57, 255, 20, 0.05);
+            border: 1px solid rgba(57, 255, 20, 0.2);
+            border-radius: 10px;
+            color: var(--white);
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .auth-input-group input:focus {
+            outline: none;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+        }
+        
+        .auth-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+        }
+        
+        .checkbox-label input {
+            display: none;
+        }
+        
+        .checkmark {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(57, 255, 20, 0.4);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .checkbox-label input:checked + .checkmark {
+            background: var(--neon-green);
+            border-color: var(--neon-green);
+        }
+        
+        .checkbox-label input:checked + .checkmark::after {
+            content: '✓';
+            color: var(--black);
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .forgot-password {
+            color: var(--neon-green);
+            text-decoration: none;
+            font-size: 14px;
+            transition: opacity 0.3s ease;
+        }
+        
+        .forgot-password:hover {
+            opacity: 0.8;
+        }
+        
+        .auth-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--neon-green);
+            color: var(--black);
+            border: none;
+            border-radius: 10px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+        }
+        
+        .auth-btn:hover {
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .auth-switch {
+            text-align: center;
+            margin-top: 25px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+        
+        .auth-switch a {
+            color: var(--neon-green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .auth-switch a:hover {
+            opacity: 0.8;
+        }
+        
+        .code-inputs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+        
+        .code-input {
+            width: 50px;
+            height: 60px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            background: rgba(57, 255, 20, 0.05);
+            border: 2px solid rgba(57, 255, 20, 0.3);
+            border-radius: 10px;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        .code-input:focus {
+            outline: none;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+        }
+        
+        .resend-code {
+            text-align: center;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+        
+        .resend-code a {
+            color: var(--neon-green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        /* User Dashboard */
+        .user-dashboard {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            display: none;
+            z-index: 9999;
+        }
+        
+        .dashboard-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 240px;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(17, 17, 17, 0.98) 0%, rgba(5, 5, 5, 0.98) 100%);
+            border-right: 2px solid rgba(57, 255, 20, 0.2);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .dashboard-logo img {
+            width: 140px;
+            margin-bottom: 40px;
+        }
+        
+        .dashboard-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+        
+        .dashboard-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            border-radius: 10px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .dashboard-nav-item:hover,
+        .dashboard-nav-item.active {
+            background: rgba(57, 255, 20, 0.1);
+            color: var(--neon-green);
+        }
+        
+        .dashboard-nav-item span {
+            font-size: 20px;
+        }
+        
+        .dashboard-logout {
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff6666;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            padding: 12px;
+            border-radius: 10px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dashboard-logout:hover {
+            background: rgba(255, 0, 0, 0.2);
+        }
+        
+        .dashboard-content {
+            margin-left: 240px;
+            padding: 40px;
+            height: 100%;
+            overflow-y: auto;
+        }
+        
+        .dashboard-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--white);
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .dashboard-header p {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .dashboard-stat {
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.95) 0%, rgba(5, 5, 5, 0.95) 100%);
+            border: 1px solid rgba(57, 255, 20, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            color: var(--neon-green);
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .dashboard-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--white);
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+        
+        .download-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .download-item {
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.95) 0%, rgba(5, 5, 5, 0.95) 100%);
+            border: 1px solid rgba(57, 255, 20, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .download-icon {
+            font-size: 36px;
+        }
+        
+        .download-info h3 {
+            color: var(--white);
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .download-info p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+        }
+        
+        .download-btn {
+            margin-left: auto;
+            background: var(--neon-green);
+            color: var(--black);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        
+        .subscription-info {
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.95) 0%, rgba(5, 5, 5, 0.95) 100%);
+            border: 1px solid rgba(57, 255, 20, 0.2);
+            padding: 25px;
+            border-radius: 12px;
+        }
+        
+        .subscription-info p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        /* Discount Slider */
+        .discount-section {
+            background: linear-gradient(135deg, rgba(17,17,17,0.95) 0%, rgba(5,5,5,0.95) 100%);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .discount-slider {
+            width: 100%;
+            margin: 30px 0;
+        }
+
+        .discount-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px;
+            color: var(--neon-green);
+            text-shadow: 0 0 20px var(--neon-green);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .price-display {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .price-item {
+            text-align: center;
+        }
+
+        .price-item p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .price-item h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+        }
+
+        .price-item.original h4 {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: line-through;
+        }
+
+        .price-item.final h4 {
+            color: var(--neon-green);
+            text-shadow: 0 0 15px var(--neon-green);
+        }
+
+        /* Premium Free Duration */
+        .duration-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .duration-btn {
+            padding: 15px;
+            background: transparent;
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .duration-btn:hover, .duration-btn.active {
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+            background: rgba(57, 255, 20, 0.1);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        .btn-small {
+            background: var(--neon-green);
+            color: var(--black);
+            padding: 12px 30px;
+            border: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+        }
+
+        .btn-small:hover {
+            box-shadow: 0 0 40px rgba(57, 255, 20, 0.6);
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 150px 60px 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            padding: 8px 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--neon-green);
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--neon-green);
+            text-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .hero-feature span {
+            color: var(--neon-green);
+            font-size: 18px;
+        }
+
+        .btn-primary {
+            background: var(--neon-green);
+            color: var(--black);
+            padding: 20px 50px;
+            border: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 60px rgba(57, 255, 20, 0.8);
+            transform: scale(1.05);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-subtext {
+            margin-top: 15px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Software Simulation */
+        .software-sim {
+            width: 400px;
+            background: linear-gradient(135deg, rgba(17,17,17,0.95) 0%, rgba(5,5,5,0.95) 100%);
+            border: 2px solid rgba(57, 255, 20, 0.3);
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 0 50px rgba(57, 255, 20, 0.2);
+        }
+
+        .software-sim::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-green), transparent, var(--neon-green));
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .software-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+        }
+
+        .software-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--neon-green);
+        }
+
+        .software-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .software-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 20px;
+            background: rgba(57, 255, 20, 0.05);
+            border: 1px solid rgba(57, 255, 20, 0.2);
+        }
+
+        .metric-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--neon-green);
+            text-shadow: 0 0 15px var(--neon-green);
+        }
+
+        .metric-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 5px;
+        }
+
+        .software-mode {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(57, 255, 20, 0.1) 0%, rgba(57, 255, 20, 0.05) 100%);
+            border: 1px solid rgba(57, 255, 20, 0.4);
+        }
+
+        .software-mode-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--neon-green);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .software-graph {
+            margin-top: 20px;
+            height: 60px;
+            display: flex;
+            align-items: flex-end;
+            gap: 5px;
+        }
+
+        .graph-bar {
+            flex: 1;
+            background: var(--neon-green);
+            box-shadow: 0 0 10px var(--neon-green);
+            animation: graph-bounce 1s infinite alternate;
+        }
+
+        @keyframes graph-bounce {
+            from { height: 20%; }
+            to { height: 100%; }
+        }
+
+        .software-btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 15px;
+            background: transparent;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .software-btn:hover {
+            background: var(--neon-green);
+            color: var(--black);
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+
+        /* Compatibility Section */
+        .compatibility {
+            padding: 100px 60px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .compatibility h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 40px;
+        }
+
+        .games-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .game-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .game-logo:hover {
+            color: var(--neon-green);
+            text-shadow: 0 0 20px var(--neon-green);
+            transform: scale(1.1);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 100px 60px;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(180deg, transparent 0%, rgba(57, 255, 20, 0.02) 50%, transparent 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .section-title h2 span {
+            color: var(--neon-green);
+            text-shadow: 0 0 15px var(--neon-green);
+        }
+
+        .section-title p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, rgba(17,17,17,0.8) 0%, rgba(5,5,5,0.8) 100%);
+            border: 1px solid rgba(57, 255, 20, 0.2);
+            padding: 40px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--neon-green);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .benefit-card:hover {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 40px rgba(57, 255, 20, 0.2);
+            transform: translateY(-10px);
+        }
+
+        .benefit-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--neon-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+        }
+
+        .benefit-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--neon-green);
+        }
+
+        .benefit-card p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        /* Before After Section */
+        .before-after {
+            padding: 100px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .before-after-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .comparison-card {
+            background: linear-gradient(135deg, rgba(17,17,17,0.8) 0%, rgba(5,5,5,0.8) 100%);
+            border: 2px solid rgba(57, 255, 20, 0.2);
+            padding: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .comparison-card.after {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 40px rgba(57, 255, 20, 0.3);
+        }
+
+        .comparison-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .comparison-card.after .comparison-label {
+            color: var(--neon-green);
+        }
+
+        .comparison-metrics {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .comparison-metric {
+            padding: 20px;
+        }
+
+        .comparison-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+
+        .comparison-card.before .comparison-value {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .comparison-card.after .comparison-value {
+            color: var(--neon-green);
+            text-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .comparison-metric-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(17,17,17,0.8) 0%, rgba(5,5,5,0.8) 100%);
+            border: 1px solid rgba(57, 255, 20, 0.2);
+            padding: 40px;
+        }
+
+        .testimonial-stars {
+            color: var(--neon-green);
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-text {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-green) 0%, rgba(57, 255, 20, 0.5) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            color: var(--black);
+        }
+
+        .author-info h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .author-info p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Plans Section */
+        .plans {
+            padding: 100px 60px;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(180deg, transparent 0%, rgba(57, 255, 20, 0.03) 50%, transparent 100%);
+        }
+
+        .plans-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto 80px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .plan-card {
+            background: linear-gradient(135deg, rgba(17,17,17,0.9) 0%, rgba(5,5,5,0.9) 100%);
+            border: 2px solid rgba(57, 255, 20, 0.2);
+            padding: 40px;
+            width: 350px;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .plan-card.free {
+            border-color: rgba(100, 100, 100, 0.5);
+        }
+
+        .plan-card.pro {
+            border-color: var(--neon-green);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.15);
+            z-index: 10;
+        }
+
+        .plan-card.pro::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, var(--neon-green), transparent, var(--neon-green), transparent, var(--neon-green));
+            background-size: 400% 400%;
+            z-index: -1;
+            animation: border-flow 3s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes border-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .plan-card.elite {
+            border-color: var(--gold);
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .plan-card.pro:hover {
+            transform: scale(1.08) translateY(-10px);
+        }
+
+        .plan-badge {
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 8px 16px;
+            margin-bottom: 25px;
+        }
+
+        .plan-card.free .plan-badge {
+            background: rgba(100, 100, 100, 0.2);
+            color: rgba(200, 200, 200, 0.9);
+            border: 1px solid rgba(100, 100, 100, 0.5);
+        }
+
+        .plan-card.pro .plan-badge {
+            background: rgba(57, 255, 20, 0.15);
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.15);
+        }
+
+        .plan-card.elite .plan-badge {
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+
+        .plan-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .plan-card.free .plan-name {
+            color: rgba(200, 200, 200, 0.9);
+        }
+
+        .plan-card.pro .plan-name {
+            color: var(--neon-green);
+            text-shadow: 0 0 5px rgba(57, 255, 20, 0.3);
+        }
+
+        .plan-card.elite .plan-name {
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .plan-price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+
+        .plan-card.free .plan-price {
+            color: rgba(200, 200, 200, 0.9);
+        }
+
+        .plan-card.pro .plan-price {
+            color: var(--neon-green);
+            text-shadow: 0 0 8px rgba(57, 255, 20, 0.2);
+        }
+
+        .plan-card.elite .plan-price {
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .plan-period {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .plan-feature {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            border-bottom: 1px solid rgba(57, 255, 20, 0.1);
+        }
+
+        .plan-feature span.check {
+            color: var(--neon-green);
+            font-size: 18px;
+        }
+
+        .plan-btn {
+            width: 100%;
+            padding: 18px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid;
+        }
+
+        .plan-card.free .plan-btn {
+            background: transparent;
+            border-color: rgba(100, 100, 100, 0.5);
+            color: rgba(200, 200, 200, 0.9);
+        }
+
+        .plan-card.free .plan-btn:hover {
+            background: rgba(100, 100, 100, 0.2);
+        }
+
+        .plan-card.pro .plan-btn {
+            background: var(--neon-green);
+            border-color: var(--neon-green);
+            color: var(--black);
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+        }
+
+        .plan-card.pro .plan-btn:hover {
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+            transform: scale(1.02);
+        }
+
+        .plan-card.elite .plan-btn {
+            background: transparent;
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .plan-card.elite .plan-btn:hover {
+            background: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            overflow-x: auto;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(57, 255, 20, 0.15);
+        }
+
+        .comparison-table th {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: rgba(57, 255, 20, 0.05);
+        }
+
+        .comparison-table th:first-child {
+            text-align: left;
+        }
+
+        .comparison-table td:first-child {
+            text-align: left;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .comparison-table .check-yes {
+            color: var(--neon-green);
+            font-size: 24px;
+        }
+
+        .comparison-table .check-no {
+            color: rgba(255, 0, 0, 0.5);
+            font-size: 24px;
+        }
+
+        /* Conversion Triggers */
+        .conversion-triggers {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .trigger {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 30px;
+            background: rgba(57, 255, 20, 0.05);
+            border: 1px solid rgba(57, 255, 20, 0.2);
+        }
+
+        .trigger-icon {
+            font-size: 32px;
+        }
+
+        .trigger-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--neon-green);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 60px;
+            background: linear-gradient(135deg, rgba(57, 255, 20, 0.05) 0%, rgba(5,5,5,1) 100%);
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--neon-green);
+            text-shadow: 0 0 20px var(--neon-green);
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Trust Section */
+        .trust {
+            padding: 100px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .trust-item {
+            text-align: center;
+            padding: 30px;
+            border: 1px solid rgba(57, 255, 20, 0.2);
+            background: rgba(57, 255, 20, 0.02);
+        }
+
+        .trust-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .trust-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--neon-green);
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 150px 60px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(57, 255, 20, 0.1) 0%, transparent 70%);
+            animation: cta-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes cta-pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        .final-cta h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 56px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-cta h2 span {
+            color: var(--neon-green);
+            text-shadow: 0 0 30px var(--neon-green);
+        }
+
+        .final-cta p {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-cta .btn-primary {
+            font-size: 20px;
+            padding: 25px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Feedback Section */
+        .feedback {
+            padding: 100px 60px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(180deg, transparent 0%, rgba(57, 255, 20, 0.03) 50%, transparent 100%);
+        }
+
+        .feedback-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .feedback-form textarea {
+            width: 100%;
+            padding: 20px;
+            background: rgba(17, 17, 17, 0.9);
+            border: 2px solid rgba(57, 255, 20, 0.3);
+            color: var(--white);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 16px;
+            resize: vertical;
+            min-height: 150px;
+            transition: all 0.3s ease;
+        }
+
+        .feedback-form textarea:focus {
+            outline: none;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+        }
+
+        .feedback-form button {
+            background: var(--neon-green);
+            color: var(--black);
+            padding: 15px 40px;
+            border: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+        }
+
+        .feedback-form button:hover {
+            box-shadow: 0 0 40px rgba(57, 255, 20, 0.6);
+            transform: scale(1.02);
+        }
+
+        .feedback-success {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            font-weight: 600;
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px;
+            text-align: center;
+            border-top: 1px solid rgba(57, 255, 20, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 200px;
+            }
+
+            .hero-features {
+                justify-content: center;
+            }
+
+            .software-sim {
+                margin-top: 60px;
+            }
+
+            .plans-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .plan-card.pro {
+                transform: scale(1);
+            }
+
+            .plan-card.pro:hover {
+                transform: scale(1.02) translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 180px 20px 80px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .software-sim {
+                width: 100%;
+            }
+
+            .compatibility, .benefits, .before-after, .testimonials, .plans, .trust, .final-cta {
+                padding: 60px 20px;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .final-cta h2 {
+                font-size: 32px;
+            }
+
+            .plan-card {
+                width: 100%;
+                max-width: 350px;
+            }
         }
     </style>
 </head>
 <body>
-
-    <div class="scanlines"></div>
+    <div class="particles" id="particles"></div>
     <div class="grid-bg"></div>
-    <div class="stars" id="starContainer"></div>
+    <div class="scanlines"></div>
 
-    <div class="container">
-        <div class="logo-container">
-            <span class="nexus">NEXUS</span>
-            <span class="booster">BOOSTER</span>
+    <header>
+        <div class="logo">
+            <img src="logonexususar.png" alt="Nexus Booster Logo" class="logo-icon">
+        </div>
+        <nav>
+            <a href="#benefits">Benefícios</a>
+            <a href="#comparar">Comparar</a>
+            <a href="#planos">Planos</a>
+            <a href="#depoimentos">Depoimentos</a>
+        </nav>
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <div id="userGreeting" style="display: none; color: var(--neon-green); font-family: 'Orbitron', sans-serif; font-size: 14px; cursor: pointer;">
+                Olá, <span id="userNameDisplay">User</span>
+            </div>
+            <button class="btn-small" id="logoutBtn" style="display: none;">Sair</button>
+            <button class="btn-small btn-login" id="openLoginBtn">Entrar</button>
+            <button class="btn-small">Baixar Agora</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">★ SOFTWARE GAMER PREMIUM ★</div>
+            <h1>
+                MAIS <span>FPS</span>.<br>
+                MENOS <span>LAG</span>.<br>
+                VITÓRIA <span>GARANTIDA</span>.
+            </h1>
+            <p>
+                Nexus Booster libera o verdadeiro potencial do seu PC, reduzindo lag, melhorando FPS e entregando desempenho máximo em qualquer jogo.
+            </p>
+            <div class="hero-features">
+                <div class="hero-feature"><span>✔</span> Compatível com todos os jogos</div>
+                <div class="hero-feature"><span>✔</span> Instalação rápida</div>
+                <div class="hero-feature"><span>✔</span> Seguro e sem vírus</div>
+                <div class="hero-feature"><span>✔</span> Ganho instantâneo</div>
+            </div>
+            <button class="btn-primary">BAIXAR AGORA</button>
+            <p class="btn-subtext">⬇️ Download seguro • 100% gratuito</p>
+        </div>
+        <div class="software-sim">
+            <div class="software-header">
+                <div class="software-title">NEXUS BOOSTER</div>
+                <div class="software-status">
+                    <div class="status-dot"></div>
+                    <span>ATIVO</span>
+                </div>
+            </div>
+            <div class="software-metrics">
+                <div class="metric">
+                    <div class="metric-value" id="fps-counter">0</div>
+                    <div class="metric-label">FPS</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" id="ping-counter">0</div>
+                    <div class="metric-label">PING (MS)</div>
+                </div>
+            </div>
+            <div class="software-mode">
+                <div class="software-mode-text">ULTRA PERFORMANCE</div>
+            </div>
+            <div class="software-graph">
+                <div class="graph-bar" style="animation-delay: 0s;"></div>
+                <div class="graph-bar" style="animation-delay: 0.1s;"></div>
+                <div class="graph-bar" style="animation-delay: 0.2s;"></div>
+                <div class="graph-bar" style="animation-delay: 0.3s;"></div>
+                <div class="graph-bar" style="animation-delay: 0.4s;"></div>
+                <div class="graph-bar" style="animation-delay: 0.5s;"></div>
+                <div class="graph-bar" style="animation-delay: 0.6s;"></div>
+                <div class="graph-bar" style="animation-delay: 0.7s;"></div>
+                <div class="graph-bar" style="animation-delay: 0.8s;"></div>
+                <div class="graph-bar" style="animation-delay: 0.9s;"></div>
+            </div>
+            <button class="software-btn">OTIMIZAR AGORA</button>
+        </div>
+    </section>
+
+    <section class="compatibility">
+        <h2>COMPATÍVEL COM TODOS OS JOGOS</h2>
+        <div class="games-grid">
+            <div class="game-logo">VALORANT</div>
+            <div class="game-logo">CS2</div>
+            <div class="game-logo">FORTNITE</div>
+            <div class="game-logo">LEAGUE OF LEGENDS</div>
+            <div class="game-logo">APEX LEGENDS</div>
+            <div class="game-logo">CALL OF DUTY</div>
+            <div class="game-logo">MINECRAFT</div>
+            <div class="game-logo">GTA V</div>
+        </div>
+    </section>
+
+    <section class="benefits" id="benefits">
+        <div class="section-title">
+            <h2>DESTRAVE O <span>MÁXIMO</span> DO SEU PC</h2>
+            <p>Tecnologia avançada para desempenho extremo</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">⚡</div>
+                <h3>MAIS FPS</h3>
+                <p>Aumente o desempenho e jogue com máxima fluidez em qualquer jogo.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🎯</div>
+                <h3>MENOS LAG</h3>
+                <p>Reduza a latência e responda mais rápido que seus oponentes.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🛡️</div>
+                <h3>MAIS ESTABILIDADE</h3>
+                <p>Elimine travamentos, quedas de FPS e frustrações.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🚀</div>
+                <h3>OTIMIZAÇÃO INTELIGENTE</h3>
+                <p>Recursos avançados que ajustam seu sistema automaticamente.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="before-after" id="comparar">
+        <div class="section-title">
+            <h2>VEJA A <span>DIFERENÇA</span></h2>
+            <p>Antes e depois da otimização Nexus Booster</p>
+        </div>
+        <div class="before-after-grid">
+            <div class="comparison-card before">
+                <div class="comparison-label">ANTES</div>
+                <div class="comparison-metrics">
+                    <div class="comparison-metric">
+                        <div class="comparison-value">60</div>
+                        <div class="comparison-metric-label">FPS</div>
+                    </div>
+                    <div class="comparison-metric">
+                        <div class="comparison-value">45</div>
+                        <div class="comparison-metric-label">PING (MS)</div>
+                    </div>
+                    <div class="comparison-metric">
+                        <div class="comparison-value">ALTO</div>
+                        <div class="comparison-metric-label">LAG</div>
+                    </div>
+                </div>
+            </div>
+            <div class="comparison-card after">
+                <div class="comparison-label">DEPOIS</div>
+                <div class="comparison-metrics">
+                    <div class="comparison-metric">
+                        <div class="comparison-value" id="after-fps">0</div>
+                        <div class="comparison-metric-label">FPS</div>
+                    </div>
+                    <div class="comparison-metric">
+                        <div class="comparison-value" id="after-ping">0</div>
+                        <div class="comparison-metric-label">PING (MS)</div>
+                    </div>
+                    <div class="comparison-metric">
+                        <div class="comparison-value">MÍNIMO</div>
+                        <div class="comparison-metric-label">LAG</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="depoimentos">
+        <div class="section-title">
+            <h2>JOGADORES COMO <span>VOCÊ</span> APROVAM</h2>
+            <p>Mais de 500 mil gamers confiaram no Nexus Booster</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Meu FPS praticamente dobrou em todos os jogos. Sinto que tenho um PC novo."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">LR</div>
+                    <div class="author-info">
+                        <h4>Lucas R.</h4>
+                        <p>FPS Player</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"O lag desapareceu completamente. Agora consigo matar primeiro nas partidas competitivas."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MS</div>
+                    <div class="author-info">
+                        <h4>Matheus S.</h4>
+                        <p>Competitivo</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Usei em vários jogos e todos rodam muito mais suaves. Recomendo!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">GT</div>
+                    <div class="author-info">
+                        <h4>Gabriel T.</h4>
+                        <p>Streamer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="plans" id="planos">
+        <div class="section-title">
+            <h2>ESCOLHA SEU <span>NÍVEL DE PERFORMANCE</span></h2>
+            <p>Do desempenho básico ao máximo potencial. Escolha o plano ideal para dominar qualquer partida.</p>
+        </div>
+        
+        <div class="plans-grid">
+            <div class="plan-card free">
+                <div class="plan-badge">🎉 30 DIAS GRÁTIS</div>
+                <h3 class="plan-name">BÁSICO</h3>
+                <div class="plan-price">R$ 5,99</div>
+                <div class="plan-period">Por mês</div>
+                <ul class="plan-features">
+                    <li class="plan-feature"><span class="check">✔</span> 30 dias grátis sem cartão</li>
+                    <li class="plan-feature"><span class="check">✔</span> Limpeza básica de memória</li>
+                    <li class="plan-feature"><span class="check">✔</span> Fechamento de processos leves</li>
+                    <li class="plan-feature"><span class="check">✔</span> Pequena otimização do sistema</li>
+                    <li class="plan-feature"><span class="check">✔</span> Compatível com todos os jogos</li>
+                    <li class="plan-feature"><span class="check">✔</span> Atualizações básicas</li>
+                </ul>
+                <button class="plan-btn">EXPERIMENTAR GRÁTIS</button>
+            </div>
+
+            <div class="plan-card pro">
+                <div class="plan-badge">⭐ MAIS POPULAR</div>
+                <h3 class="plan-name">PRO</h3>
+                <div class="plan-price">R$ 19,90</div>
+                <div class="plan-period">Por mês</div>
+                <ul class="plan-features">
+                    <li class="plan-feature"><span class="check">✔</span> Tudo do plano Básico +</li>
+                    <li class="plan-feature"><span class="check">✔</span> Boost avançado de FPS</li>
+                    <li class="plan-feature"><span class="check">✔</span> Redução inteligente de latência</li>
+                    <li class="plan-feature"><span class="check">✔</span> Otimização automática em tempo real</li>
+                    <li class="plan-feature"><span class="check">✔</span> Perfil gamer personalizado</li>
+                    <li class="plan-feature"><span class="check">✔</span> Atualizações prioritárias</li>
+                    <li class="plan-feature"><span class="check">✔</span> Suporte prioritário</li>
+                    <li class="plan-feature"><span class="check">✔</span> Painel avançado de desempenho</li>
+                </ul>
+                <button class="plan-btn">OBTER NEXUS PRO</button>
+            </div>
+
+            <div class="plan-card elite">
+                <div class="plan-badge">🔥 DESEMPENHO MÁXIMO</div>
+                <h3 class="plan-name">ELITE</h3>
+                <div class="plan-price">R$ 49,90</div>
+                <div class="plan-period">Por mês</div>
+                <ul class="plan-features">
+                    <li class="plan-feature"><span class="check">✔</span> Tudo do plano Pro +</li>
+                    <li class="plan-feature"><span class="check">✔</span> Modo Ultra Performance</li>
+                    <li class="plan-feature"><span class="check">✔</span> IA de otimização automática</li>
+                    <li class="plan-feature"><span class="check">✔</span> Prioridade máxima de CPU e RAM</li>
+                    <li class="plan-feature"><span class="check">✔</span> Redução extrema de input lag</li>
+                    <li class="plan-feature"><span class="check">✔</span> Recursos experimentais exclusivos</li>
+                    <li class="plan-feature"><span class="check">✔</span> Acesso antecipado a novas funções</li>
+                    <li class="plan-feature"><span class="check">✔</span> Atendimento VIP</li>
+                    <li class="plan-feature"><span class="check">✔</span> Estatísticas avançadas</li>
+                    <li class="plan-feature"><span class="check">✔</span> Configurações profissionais para eSports</li>
+                </ul>
+                <button class="plan-btn">ATIVAR ELITE AGORA</button>
+            </div>
         </div>
 
-        <p class="subtitle">Acelere seu sistema ao limite máximo</p>
-
-        <div class="features">
-            <div class="feature-card">
-                <h3>⚡ Otimização Inteligente</h3>
-                <p>Algoritmos avançados que analisam e otimizam seu sistema automaticamente.</p>
-            </div>
-            <div class="feature-card">
-                <h3>🛡️ Segurança Total</h3>
-                <p>Proteja seu PC contra ameaças enquanto melhora o desempenho.</p>
-            </div>
-            <div class="feature-card">
-                <h3>🎮 Modo Gamer</h3>
-                <p>Priorize recursos para jogos e elimine lag de uma vez por todas.</p>
-            </div>
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Recursos</th>
+                        <th>Básico</th>
+                        <th>Pro</th>
+                        <th>Elite</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Limpeza Básica</td>
+                        <td><span class="check-yes">✔</span></td>
+                        <td><span class="check-yes">✔</span></td>
+                        <td><span class="check-yes">✔</span></td>
+                    </tr>
+                    <tr>
+                        <td>Boost FPS</td>
+                        <td><span class="check-no">✖</span></td>
+                        <td><span class="check-yes">✔</span></td>
+                        <td><span class="check-yes">✔</span></td>
+                    </tr>
+                    <tr>
+                        <td>Redução de Ping</td>
+                        <td><span class="check-no">✖</span></td>
+                        <td><span class="check-yes">✔</span></td>
+                        <td><span class="check-yes">✔</span></td>
+                    </tr>
+                    <tr>
+                        <td>Otimização em Tempo Real</td>
+                        <td><span class="check-no">✖</span></td>
+                        <td><span class="check-yes">✔</span></td>
+                        <td><span class="check-yes">✔</span></td>
+                    </tr>
+                    <tr>
+                        <td>IA Avançada</td>
+                        <td><span class="check-no">✖</span></td>
+                        <td><span class="check-no">✖</span></td>
+                        <td><span class="check-yes">✔</span></td>
+                    </tr>
+                    <tr>
+                        <td>Recursos eSports</td>
+                        <td><span class="check-no">✖</span></td>
+                        <td><span class="check-no">✖</span></td>
+                        <td><span class="check-yes">✔</span></td>
+                    </tr>
+                    <tr>
+                        <td>Suporte VIP</td>
+                        <td><span class="check-no">✖</span></td>
+                        <td><span class="check-no">✖</span></td>
+                        <td><span class="check-yes">✔</span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <div class="button-container">
-            <button onclick="alert('Iniciando Otimização...')">ATIVAR BOOSTER</button>
-            <button class="secondary">SAIBA MAIS</button>
+        <div class="conversion-triggers">
+            <div class="trigger">
+                <div class="trigger-icon">🔥</div>
+                <div class="trigger-text">Mais de 500.000 downloads</div>
+            </div>
+            <div class="trigger">
+                <div class="trigger-icon">⭐</div>
+                <div class="trigger-text">Avaliação média de 4,9/5</div>
+            </div>
+            <div class="trigger">
+                <div class="trigger-icon">🛡️</div>
+                <div class="trigger-text">Garantia de satisfação</div>
+            </div>
+            <div class="trigger">
+                <div class="trigger-icon">🚀</div>
+                <div class="trigger-text">Instalação em menos de 1 minuto</div>
+            </div>
         </div>
+    </section>
 
-        <div class="stats">
+    <section class="stats">
+        <div class="stats-grid">
             <div class="stat-item">
-                <span class="stat-number">10M+</span>
-                <span class="stat-label">Downloads</span>
+                <h3 id="stat-downloads">0</h3>
+                <p>Downloads</p>
             </div>
             <div class="stat-item">
-                <span class="stat-number">98%</span>
-                <span class="stat-label">Satisfação</span>
+                <h3 id="stat-approval">0%</h3>
+                <p>Aprovação</p>
             </div>
             <div class="stat-item">
-                <span class="stat-number">500%</span>
-                <span class="stat-label">Performance</span>
+                <h3 id="stat-countries">0</h3>
+                <p>Países</p>
+            </div>
+            <div class="stat-item">
+                <h3 id="stat-optimizations">0</h3>
+                <p>Otimizações</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust">
+        <div class="section-title">
+            <h2>SEGURO E <span>CONFIAVEL</span></h2>
+            <p>Jogue tranquilo sem riscos</p>
+        </div>
+        <div class="trust-grid">
+            <div class="trust-item">
+                <div class="trust-icon">🛡️</div>
+                <h4>Livre de vírus</h4>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">🛡️</div>
+                <h4>Seguro para jogos online</h4>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">🛡️</div>
+                <h4>Sem alteração de arquivos</h4>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">🛡️</div>
+                <h4>Compatível com Windows</h4>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <h2>PARE DE JOGAR COM <span>DESVANTAGEM</span>.</h2>
+        <p>Libere o desempenho máximo do seu PC agora.</p>
+        <button class="btn-primary">🚀 BAIXAR NEXUS BOOSTER AGORA</button>
+    </section>
+
+    <section class="feedback">
+        <div class="section-title">
+            <h2>ENVIE SEU <span>FEEDBACK</span></h2>
+            <p>Compartilhe sua experiência e ajude-nos a melhorar</p>
+        </div>
+        <form class="feedback-form" id="feedback-form">
+            <textarea id="feedback-text" placeholder="Digite aqui o que você acha do Nexus Booster..." required></textarea>
+            <button type="submit">ENVIAR FEEDBACK</button>
+            <div class="feedback-success" id="feedback-success">Obrigado pelo seu feedback! Agradecemos pela sua contribuição.</div>
+        </form>
+    </section>
+
+    <!-- Admin Modal -->
+    <div class="admin-modal-overlay" id="adminModal">
+        <div class="admin-modal">
+            <h2>Painel Administrativo</h2>
+            <input type="password" id="adminPassword" placeholder="Digite a senha" autocomplete="off">
+            <button id="adminLoginBtn">Entrar</button>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-dashboard" id="adminDashboard">
+        <div class="admin-sidebar">
+            <h3>NEXUS ADMIN</h3>
+            <ul>
+                <li><a href="#" class="admin-menu-item active" data-section="dashboard">Dashboard</a></li>
+                <li><a href="#" class="admin-menu-item" data-section="usuarios">Usuários</a></li>
+                <li><a href="#" class="admin-menu-item" data-section="descontos">Descontos</a></li>
+            </ul>
+        </div>
+        <div class="admin-content">
+            <div class="admin-header">
+                <h1 id="adminSectionTitle">Dashboard</h1>
+                <button class="admin-logout" id="adminLogoutBtn">Sair</button>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div id="dashboardSection" class="admin-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4 class="counter" data-target="0">0</h4>
+                        <p>Total de Usuários</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4 class="counter" data-target="0">0</h4>
+                        <p>Downloads Totais</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4 class="counter" data-target="R$ 0">0</h4>
+                        <p>Receita Total</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Usuários Section -->
+            <div id="usuariosSection" class="admin-section" style="display: none;">
+                <div class="search-bar">
+                    <input type="text" id="userSearch" placeholder="Pesquisar por nome, email ou ID...">
+                </div>
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Plano</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                    <tr class="user-row" data-user-id="1">
+                        <td>1</td>
+                        <td>João Silva</td>
+                        <td>joao@email.com</td>
+                        <td>Pro</td>
+                        <td style="color: var(--neon-green);">Ativo</td>
+                        <td>
+                            <button class="btn-activate small-btn" data-action="toggle-status">Alternar Status</button>
+                        </td>
+                    </tr>
+                    <tr class="user-row" data-user-id="2">
+                        <td>2</td>
+                        <td>Maria Santos</td>
+                        <td>maria@email.com</td>
+                        <td>Básico</td>
+                        <td style="color: var(--neon-green);">Ativo</td>
+                        <td>
+                            <button class="btn-activate small-btn" data-action="toggle-status">Alternar Status</button>
+                        </td>
+                    </tr>
+                    <tr class="user-row" data-user-id="3">
+                        <td>3</td>
+                        <td>Pedro Costa</td>
+                        <td>pedro@email.com</td>
+                        <td>Elite</td>
+                        <td style="color: #ff6666;">Suspenso</td>
+                        <td>
+                            <button class="btn-activate small-btn" data-action="toggle-status">Alternar Status</button>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+
+                <div class="user-details" id="userDetails">
+                    <h3>Detalhes do Usuário</h3>
+                    <div class="user-details-grid">
+                        <div class="user-detail-item">
+                            <p>Nome</p>
+                            <h4 id="detailName">-</h4>
+                        </div>
+                        <div class="user-detail-item">
+                            <p>Email</p>
+                            <h4 id="detailEmail">-</h4>
+                        </div>
+                        <div class="user-detail-item">
+                            <p>Data de Cadastro</p>
+                            <h4 id="detailDate">-</h4>
+                        </div>
+                        <div class="user-detail-item">
+                            <p>Plano Atual</p>
+                            <h4 id="detailPlan">-</h4>
+                        </div>
+                        <div class="user-detail-item">
+                            <p>Status</p>
+                            <h4 id="detailStatus">-</h4>
+                        </div>
+                    </div>
+                    <div class="user-actions">
+                        <button class="btn-activate" id="toggleStatusBtn">Alternar Status</button>
+                        <button class="btn-activate" id="togglePremiumBtn">Alternar Premium</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Descontos Section -->
+            <div id="descontosSection" class="admin-section" style="display: none;">
+                <div class="discount-section">
+                    <h2 style="font-family: 'Orbitron', sans-serif; color: var(--neon-green); margin-bottom: 30px;">Sistema de Descontos</h2>
+                    <div class="discount-value" id="discountValue">0%</div>
+                    <input type="range" class="discount-slider" id="discountSlider" min="0" max="100" value="0" step="10">
+                    <div class="price-display">
+                        <div class="price-item original">
+                            <p>Valor Original</p>
+                            <h4>R$ 19,90</h4>
+                        </div>
+                        <div class="price-item final">
+                            <p>Valor Final</p>
+                            <h4 id="finalPrice">R$ 19,90</h4>
+                        </div>
+                    </div>
+
+                    <h3 style="font-family: 'Orbitron', sans-serif; color: var(--neon-green); margin: 40px 0 20px;">Premium Gratuito Temporário</h3>
+                    <div class="duration-selector">
+                        <button class="duration-btn" data-days="1">1 Dia</button>
+                        <button class="duration-btn" data-days="3">3 Dias</button>
+                        <button class="duration-btn" data-days="7">7 Dias</button>
+                        <button class="duration-btn" data-days="15">15 Dias</button>
+                        <button class="duration-btn" data-days="30">30 Dias</button>
+                        <button class="duration-btn" data-days="90">90 Dias</button>
+                    </div>
+                    <div id="selectedDuration" style="margin-top: 20px; color: var(--neon-green); font-family: 'Orbitron', sans-serif; text-align: center;"></div>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Google OAuth Simulation Modal -->
+    <div class="google-oauth-modal-overlay" id="googleOAuthModal" style="display: none;">
+        <div class="google-oauth-modal">
+            <div class="google-oauth-header">
+                <div class="google-oauth-logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M3.34 14.29c-.37-1.11-.58-2.31-.58-3.54s.21-2.43.58-3.54V4.37H2.18C.79 7.14 0 9.52 0 12c0 2.48.79 4.86 2.18 7.63l1.16-2.84z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.37l1.16 2.84C4.71 7.48 7.14 5.38 12 5.38z"/>
+                    </svg>
+                </div>
+                <h3>Escolha uma conta</h3>
+                <p>para continuar com Nexus Booster</p>
+            </div>
+            <div class="google-oauth-accounts">
+                <div class="google-oauth-account" data-email="usuario@gmail.com" data-name="Usuário">
+                    <div class="google-account-avatar">U</div>
+                    <div class="google-account-info">
+                        <h4>Usuário</h4>
+                        <p>usuario@gmail.com</p>
+                    </div>
+                </div>
+                <div class="google-oauth-account" data-email="jogador@gmail.com" data-name="Jogador Pro">
+                    <div class="google-account-avatar">J</div>
+                    <div class="google-account-info">
+                        <h4>Jogador Pro</h4>
+                        <p>jogador@gmail.com</p>
+                    </div>
+                </div>
+                <div class="google-oauth-account" id="selectGoogleAccount">
+                    <div class="google-account-avatar" style="background: #f1f3f4; color: #5f6368;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="#5f6368"/>
+                        </svg>
+                    </div>
+                    <div class="google-account-info">
+                        <h4>Usar outra conta</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Login/Signup Modal -->
+    <div class="auth-modal-overlay" id="authModal">
+        <div class="auth-modal">
+            <button class="auth-close" id="authCloseBtn">&times;</button>
+            
+            <!-- Login View -->
+            <div class="auth-view" id="loginView">
+                <div class="auth-logo">
+                    <img src="logonexususar.png" alt="Nexus Booster Logo">
+                </div>
+                <h2 class="auth-title">Entrar</h2>
+                <p class="auth-subtitle">Acesse sua conta Nexus Booster e desbloqueie o máximo desempenho.</p>
+                
+                <button class="google-btn" id="googleLoginBtn">
+                    <svg width="18" height="18" viewBox="0 0 18 18">
+                        <path fill="#4285F4" d="M17.64 1.252c0-.639-.057-1.252-.2-1.841H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/>
+                        <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/>
+                        <path fill="#FBBC05" d="M3.964 10.719a5.4 5.4 0 0 1 0-3.438V4.949H.957a8.997 8.997 0 0 0 0 8.103l3.007-2.333z"/>
+                        <path fill="#EA4335" d="M9 3.579c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.438 0 2.372 2.066.957 4.949l3.007 2.332C4.672 5.163 6.656 3.579 9 3.579z"/>
+                    </svg>
+                    CONTINUAR COM GOOGLE
+                </button>
+                
+                <div class="auth-divider">
+                    <span>ou</span>
+                </div>
+                
+                <form id="loginForm">
+                    <div class="auth-input-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" placeholder="Digite seu email">
+                    </div>
+                    <div class="auth-input-group">
+                        <label for="loginPassword">Senha</label>
+                        <input type="password" id="loginPassword" placeholder="Digite sua senha">
+                    </div>
+                    <div class="auth-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Lembrar de mim
+                        </label>
+                        <a href="#" class="forgot-password" id="forgotPasswordBtn">Esqueci minha senha</a>
+                    </div>
+                    <button type="submit" class="auth-btn">ENTRAR</button>
+                </form>
+                
+                <div class="auth-switch">
+                    Não possui uma conta? <a href="#" id="goToSignupBtn">Clique aqui para cadastrar</a>
+                </div>
+            </div>
+            
+            <!-- Signup View -->
+            <div class="auth-view" id="signupView" style="display: none;">
+                <div class="auth-logo">
+                    <img src="logonexususar.png" alt="Nexus Booster Logo">
+                </div>
+                <h2 class="auth-title">Bem-vindo!</h2>
+                <p class="auth-subtitle">Crie sua conta Nexus Booster e desbloqueie o máximo desempenho.</p>
+                
+                <button class="google-btn" id="googleSignupBtn">
+                    <svg width="18" height="18" viewBox="0 0 18 18">
+                        <path fill="#4285F4" d="M17.64 9.205c0-.639-.057-1.252-.164-1.841H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/>
+                        <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/>
+                        <path fill="#FBBC05" d="M3.964 10.719a5.4 5.4 0 0 1 0-3.438V4.949H.957a8.997 8.997 0 0 0 0 8.103l3.007-2.333z"/>
+                        <path fill="#EA4335" d="M9 3.579c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.438 0 2.372 2.066.957 4.949l3.007 2.332C4.672 5.163 6.656 3.579 9 3.579z"/>
+                    </svg>
+                    CONTINUAR COM GOOGLE
+                </button>
+                
+                <div class="auth-divider">
+                    <span>ou</span>
+                </div>
+                
+                <form id="signupForm">
+                    <div class="auth-input-group">
+                        <label for="signupName">Nome Completo</label>
+                        <input type="text" id="signupName" placeholder="Digite seu nome completo">
+                    </div>
+                    <div class="auth-input-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" placeholder="Digite seu email">
+                    </div>
+                    <div class="auth-input-group">
+                        <label for="signupPassword">Senha</label>
+                        <input type="password" id="signupPassword" placeholder="Digite sua senha">
+                    </div>
+                    <div class="auth-input-group">
+                        <label for="signupConfirmPassword">Confirmar Senha</label>
+                        <input type="password" id="signupConfirmPassword" placeholder="Confirme sua senha">
+                    </div>
+                    <button type="submit" class="auth-btn">CRIAR CONTA</button>
+                </form>
+                
+                <div class="auth-switch">
+                    Já possui uma conta? <a href="#" id="goToLoginBtn">Clique aqui para entrar</a>
+                </div>
+            </div>
+            
+            <!-- Email Verification View -->
+            <div class="auth-view" id="verifyView" style="display: none;">
+                <div class="auth-logo">
+                    <img src="logonexususar.png" alt="Nexus Booster Logo">
+                </div>
+                <h2 class="auth-title">Verifique seu Email</h2>
+                <p class="auth-subtitle">Enviamos um código de verificação de 6 dígitos para o seu endereço de email.</p>
+                
+                <div class="code-inputs">
+                    <input type="text" maxlength="1" class="code-input" data-index="0">
+                    <input type="text" maxlength="1" class="code-input" data-index="1">
+                    <input type="text" maxlength="1" class="code-input" data-index="2">
+                    <input type="text" maxlength="1" class="code-input" data-index="3">
+                    <input type="text" maxlength="1" class="code-input" data-index="4">
+                    <input type="text" maxlength="1" class="code-input" data-index="5">
+                </div>
+                
+                <button class="auth-btn" id="verifyBtn">VERIFICAR CONTA</button>
+                <div class="resend-code">
+                    <span>Não recebeu o código?</span>
+                    <a href="#" id="resendCodeBtn">Reenviar código</a>
+                </div>
+            </div>
+            
+            <!-- Password Recovery View -->
+            <div class="auth-view" id="forgotView" style="display: none;">
+                <div class="auth-logo">
+                    <img src="logonexususar.png" alt="Nexus Booster Logo">
+                </div>
+                <h2 class="auth-title">Recuperar Senha</h2>
+                <p class="auth-subtitle">Digite seu email para receber um código de recuperação.</p>
+                
+                <form id="forgotForm">
+                    <div class="auth-input-group">
+                        <label for="forgotEmail">Email</label>
+                        <input type="email" id="forgotEmail" placeholder="Digite seu email">
+                    </div>
+                    <button type="submit" class="auth-btn">ENVIAR CÓDIGO</button>
+                </form>
+                
+                <div class="auth-switch">
+                    Lembre-se da senha? <a href="#" id="backToLoginBtn">Voltar para o login</a>
+                </div>
+            </div>
+            
+            <!-- Reset Password View -->
+            <div class="auth-view" id="resetView" style="display: none;">
+                <div class="auth-logo">
+                    <img src="logonexususar.png" alt="Nexus Booster Logo">
+                </div>
+                <h2 class="auth-title">Nova Senha</h2>
+                <p class="auth-subtitle">Crie uma nova senha para sua conta.</p>
+                
+                <form id="resetForm">
+                    <div class="code-inputs">
+                        <input type="text" maxlength="1" class="code-input" data-index="0">
+                        <input type="text" maxlength="1" class="code-input" data-index="1">
+                        <input type="text" maxlength="1" class="code-input" data-index="2">
+                        <input type="text" maxlength="1" class="code-input" data-index="3">
+                        <input type="text" maxlength="1" class="code-input" data-index="4">
+                        <input type="text" maxlength="1" class="code-input" data-index="5">
+                    </div>
+                    <div class="auth-input-group">
+                        <label for="newPassword">Nova Senha</label>
+                        <input type="password" id="newPassword" placeholder="Digite sua nova senha">
+                    </div>
+                    <div class="auth-input-group">
+                        <label for="confirmNewPassword">Confirmar Nova Senha</label>
+                        <input type="password" id="confirmNewPassword" placeholder="Confirme sua nova senha">
+                    </div>
+                    <button type="submit" class="auth-btn">REDEFINIR SENHA</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- User Dashboard -->
+    <div class="user-dashboard" id="userDashboard">
+        <div class="dashboard-sidebar">
+            <div class="dashboard-logo">
+                <img src="logonexususar.png" alt="Nexus Booster Logo">
+            </div>
+            <nav class="dashboard-nav">
+                <a href="#" class="dashboard-nav-item active" data-section="overview">
+                    <span>📊</span> Overview
+                </a>
+                <a href="#" class="dashboard-nav-item" data-section="downloads">
+                    <span>⬇️</span> Downloads
+                </a>
+                <a href="#" class="dashboard-nav-item" data-section="subscription">
+                    <span>💳</span> Assinatura
+                </a>
+                <a href="#" class="dashboard-nav-item" data-section="settings">
+                    <span>⚙️</span> Configurações
+                </a>
+            </nav>
+            <button class="dashboard-logout" id="dashboardLogoutBtn">Sair</button>
+        </div>
+        <div class="dashboard-content">
+            <div class="dashboard-header">
+                <h1 id="dashboardGreeting">Olá, Usuário!</h1>
+                <p>Bem-vindo de volta à Nexus Booster.</p>
+            </div>
+            
+            <!-- Overview Section -->
+            <div id="overviewSection" class="dashboard-section">
+                <div class="dashboard-stats">
+                    <div class="dashboard-stat">
+                        <div class="stat-value" id="statPlan">Básico</div>
+                        <div class="stat-label">Plano Atual</div>
+                    </div>
+                    <div class="dashboard-stat">
+                        <div class="stat-value" id="statStatus">Ativo</div>
+                        <div class="stat-label">Status</div>
+                    </div>
+                    <div class="dashboard-stat">
+                        <div class="stat-value" id="statExpiry">--/--/----</div>
+                        <div class="stat-label">Expira em</div>
+                    </div>
+                    <div class="dashboard-stat">
+                        <div class="stat-value" id="statDownloads">0</div>
+                        <div class="stat-label">Downloads</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Downloads Section -->
+            <div id="downloadsSection" class="dashboard-section" style="display: none;">
+                <h2>Downloads Disponíveis</h2>
+                <div class="download-items">
+                    <div class="download-item">
+                        <div class="download-icon">💾</div>
+                        <div class="download-info">
+                            <h3>Nexus Booster - Windows</h3>
+                            <p>Versão 2.1.0</p>
+                        </div>
+                        <button class="download-btn">Baixar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Subscription Section -->
+            <div id="subscriptionSection" class="dashboard-section" style="display: none;">
+                <h2>Minha Assinatura</h2>
+                <div class="subscription-info">
+                    <p><strong>Plano:</strong> Básico</p>
+                    <p><strong>Preço:</strong> R$5,99/mês</p>
+                    <p><strong>Status:</strong> Ativo</p>
+                    <p><strong>Próximo vencimento:</strong> --/--/----</p>
+                </div>
+            </div>
+            
+            <!-- Settings Section -->
+            <div id="settingsSection" class="dashboard-section" style="display: none;">
+                <h2>Configurações da Conta</h2>
+                <div class="settings-group">
+                    <div class="auth-input-group">
+                        <label>Nome</label>
+                        <input type="text" id="settingsName" placeholder="Nome">
+                    </div>
+                    <div class="auth-input-group">
+                        <label>Email</label>
+                        <input type="email" id="settingsEmail" placeholder="Email" disabled>
+                    </div>
+                    <button class="auth-btn">Salvar Alterações</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Nexus AI Chat -->
+    <div class="chat-button" id="chatButton">
+        <span class="chat-icon">💬</span>
+    </div>
+
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div class="chat-avatar">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="5" y="3" width="14" height="14" rx="3" fill="#0a0a0a"/>
+                    <circle cx="9" cy="8" r="2" fill="#39FF14"/>
+                    <circle cx="15" cy="8" r="2" fill="#39FF14"/>
+                    <path d="M8 13 Q12 17 16 13" stroke="#39FF14" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    <rect x="11" y="17" width="2" height="2" rx="1" fill="#0a0a0a"/>
+                    <circle cx="12" cy="1" r="1" fill="#0a0a0a"/>
+                    <rect x="11.5" y="1" width="1" height="2" fill="#0a0a0a"/>
+                </svg>
+            </div>
+            <div class="chat-header-info">
+                <h3>Nexus</h3>
+                <span class="chat-status">Online</span>
+            </div>
+            <button class="chat-close" id="chatClose">&times;</button>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message nexus-message">
+                <div class="message-avatar">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="5" y="3" width="14" height="14" rx="3" fill="#39FF14"/>
+                        <circle cx="9" cy="8" r="2" fill="#0a0a0a"/>
+                        <circle cx="15" cy="8" r="2" fill="#0a0a0a"/>
+                        <path d="M8 13 Q12 17 16 13" stroke="#0a0a0a" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        <rect x="11" y="17" width="2" height="2" rx="1" fill="#39FF14"/>
+                        <circle cx="12" cy="1" r="1" fill="#39FF14"/>
+                        <rect x="11.5" y="1" width="1" height="2" fill="#39FF14"/>
+                    </svg>
+                </div>
+                <div class="message-content">
+                    <p>Olá! Eu sou a Nexus, assistente virtual oficial da Nexus Booster. 👋</p>
+                    <p>Estou aqui para ajudar com dúvidas, instalação, planos Premium, pagamentos e suporte técnico.</p>
+                    <p>Como posso ajudar você hoje?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-buttons">
+            <button class="quick-btn" data-question="Como faço para instalar?">Como instalar?</button>
+            <button class="quick-btn" data-question="Quais são os planos Premium?">Planos Premium</button>
+            <button class="quick-btn" data-question="Estou com problemas de pagamento">Problemas de pagamento</button>
+            <button class="quick-btn" data-question="Meu jogo está travando">Meu jogo está travando</button>
+            <button class="quick-btn" data-question="Quero falar com o suporte humano">Falar com suporte</button>
+            <button class="quick-btn" data-question="Quais são as perguntas frequentes?">Perguntas frequentes</button>
+        </div>
+
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Digite sua mensagem...">
+            <button id="chatSend">➤</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Nexus Booster. Todos os direitos reservados.</p>
+    </footer>
+
     <script>
-        const starContainer = document.getElementById('starContainer');
+        // Create Particles
+        const particlesContainer = document.getElementById('particles');
         for (let i = 0; i < 100; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.width = Math.random() * 4 + 'px';
-            star.style.height = star.style.width;
-            star.style.top = Math.random() * 100 + '%';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.animationDelay = Math.random() * 3 + 's';
-            starContainer.appendChild(star);
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = Math.random() * 4 + 1 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.opacity = Math.random() * 0.5 + 0.2;
+            
+            particlesContainer.appendChild(particle);
+            
+            animateParticle(particle);
         }
+        
+        function animateParticle(particle) {
+            let x = parseFloat(particle.style.left);
+            let y = parseFloat(particle.style.top);
+            let speedX = (Math.random() - 0.5) * 0.1;
+            let speedY = (Math.random() - 0.5) * 0.1;
+            
+            function move() {
+                x += speedX;
+                y += speedY;
+                
+                if (x < 0) x = 100;
+                if (x > 100) x = 0;
+                if (y < 0) y = 100;
+                if (y > 100) y = 0;
+                
+                particle.style.left = x + '%';
+                particle.style.top = y + '%';
+                
+                requestAnimationFrame(move);
+            }
+            
+            move();
+        }
+
+        // Counter Animation
+        function animateCounter(element, target, suffix = '', duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function update() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start).toLocaleString() + suffix;
+                    requestAnimationFrame(update);
+                } else {
+                    element.textContent = target.toLocaleString() + suffix;
+                }
+            }
+            
+            update();
+        }
+
+        // Hero Counter Animation
+        setTimeout(() => {
+            animateCounter(document.getElementById('fps-counter'), 240);
+            animateCounter(document.getElementById('ping-counter'), 8);
+            animateCounter(document.getElementById('after-fps'), 240);
+            animateCounter(document.getElementById('after-ping'), 8);
+        }, 500);
+
+        // Stats Counter Animation
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(document.getElementById('stat-downloads'), 500000, '+');
+                    animateCounter(document.getElementById('stat-approval'), 98, '%');
+                    animateCounter(document.getElementById('stat-countries'), 120, '+');
+                    animateCounter(document.getElementById('stat-optimizations'), 10000000, '+');
+                    statsObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statsObserver.observe(document.querySelector('.stats'));
+
+        // FPS Counter Fluctuation
+        setInterval(() => {
+            const fpsCounter = document.getElementById('fps-counter');
+            const currentFps = parseInt(fpsCounter.textContent);
+            const newFps = currentFps + Math.floor(Math.random() * 10) - 5;
+            if (newFps >= 220 && newFps <= 260) {
+                fpsCounter.textContent = newFps;
+            }
+        }, 1000);
+
+        // Feedback Form Handler
+        const feedbackForm = document.getElementById('feedback-form');
+        const feedbackText = document.getElementById('feedback-text');
+        const feedbackSuccess = document.getElementById('feedback-success');
+
+        feedbackForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (feedbackText.value.trim()) {
+                // Here you would normally send the feedback to a server
+                // For now, we'll just show a success message
+                feedbackSuccess.style.display = 'block';
+                feedbackText.value = '';
+                setTimeout(() => {
+                    feedbackSuccess.style.display = 'none';
+                }, 5000);
+            }
+        });
+
+        // Admin Panel Functionality
+        let longPressTimer = null;
+        const logoIcon = document.querySelector('.logo-icon');
+        const adminModal = document.getElementById('adminModal');
+        const adminDashboard = document.getElementById('adminDashboard');
+        const adminPasswordInput = document.getElementById('adminPassword');
+        const adminLoginBtn = document.getElementById('adminLoginBtn');
+        const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+        const adminMenuItems = document.querySelectorAll('.admin-menu-item');
+        const adminSections = document.querySelectorAll('.admin-section');
+
+        let isLongPress = false;
+        let selectedUser = null;
+
+        // Logo Long Press - Mouse
+        logoIcon.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            isLongPress = false;
+            longPressTimer = setTimeout(() => {
+                isLongPress = true;
+                adminModal.style.display = 'flex';
+                adminPasswordInput.focus();
+            }, 4000);
+        });
+
+        logoIcon.addEventListener('mouseup', () => {
+            clearTimeout(longPressTimer);
+            if (!isLongPress) {
+                // Scroll to top on short click
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        });
+
+        logoIcon.addEventListener('mouseleave', () => {
+            clearTimeout(longPressTimer);
+        });
+
+        // Logo Long Press - Touch
+        logoIcon.addEventListener('touchstart', (e) => {
+            isLongPress = false;
+            longPressTimer = setTimeout(() => {
+                isLongPress = true;
+                adminModal.style.display = 'flex';
+                adminPasswordInput.focus();
+            }, 4000);
+        });
+
+        logoIcon.addEventListener('touchend', (e) => {
+            clearTimeout(longPressTimer);
+            if (!isLongPress) {
+                // Scroll to top on short touch
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        });
+
+        logoIcon.addEventListener('touchcancel', () => {
+            clearTimeout(longPressTimer);
+        });
+
+        // Close modal when clicking outside
+        adminModal.addEventListener('click', (e) => {
+            if (e.target === adminModal) {
+                adminModal.style.display = 'none';
+            }
+        });
+
+        // Admin Login
+        adminLoginBtn.addEventListener('click', () => {
+            const password = adminPasswordInput.value;
+            // In a real implementation, this would be validated on the server with a secure hash
+            if (password === 'J6t2hybt26@@@') {
+                adminModal.style.display = 'none';
+                adminDashboard.style.display = 'block';
+                adminPasswordInput.value = '';
+                animateCounters();
+            } else {
+                alert('Senha incorreta!');
+            }
+        });
+
+        // Enter key for login
+        adminPasswordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                adminLoginBtn.click();
+            }
+        });
+
+        // Admin Logout
+        adminLogoutBtn.addEventListener('click', () => {
+            adminDashboard.style.display = 'none';
+        });
+
+        // Admin Menu Navigation
+        adminMenuItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = item.dataset.section;
+
+                // Update active menu item
+                adminMenuItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+
+                // Update section title
+                const titles = {
+                    dashboard: 'Dashboard',
+                    usuarios: 'Usuários',
+                    descontos: 'Descontos'
+                };
+                document.getElementById('adminSectionTitle').textContent = titles[section];
+
+                // Show/hide sections
+                adminSections.forEach(s => s.style.display = 'none');
+                const sectionElement = document.getElementById(section + 'Section');
+                if (sectionElement) {
+                    sectionElement.style.display = 'block';
+                    if (section === 'dashboard') {
+                        animateCounters();
+                    }
+                }
+            });
+        });
+
+        // Animate Counters
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = counter.dataset.target;
+                counter.textContent = '0';
+                const isCurrency = target.includes('R$');
+                const isPercentage = target.includes('%');
+                let numericTarget = parseFloat(target.replace(/[^0-9.]/g, ''));
+
+                let current = 0;
+                const increment = numericTarget / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= numericTarget) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        if (isCurrency) {
+                            counter.textContent = 'R$ ' + Math.floor(current).toLocaleString();
+                        } else if (isPercentage) {
+                            counter.textContent = current.toFixed(1) + '%';
+                        } else {
+                            counter.textContent = Math.floor(current).toLocaleString();
+                        }
+                    }
+                }, 30);
+            });
+        }
+
+        // User Search
+        const userSearch = document.getElementById('userSearch');
+        if (userSearch) {
+            userSearch.addEventListener('input', () => {
+                const searchTerm = userSearch.value.toLowerCase();
+                const userRows = document.querySelectorAll('.user-row');
+                userRows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // User Row Click
+        const userRows = document.querySelectorAll('.user-row');
+        userRows.forEach(row => {
+            row.addEventListener('click', (e) => {
+                // Don't trigger if clicking the action button
+                if (e.target.tagName === 'BUTTON') return;
+                
+                selectedUser = row;
+                const cells = row.querySelectorAll('td');
+                const userDetails = document.getElementById('userDetails');
+
+                document.getElementById('detailName').textContent = cells[1].textContent;
+                document.getElementById('detailEmail').textContent = cells[2].textContent;
+                document.getElementById('detailDate').textContent = '01/01/2024';
+                document.getElementById('detailPlan').textContent = cells[3].textContent;
+                document.getElementById('detailStatus').textContent = cells[4].textContent;
+
+                userDetails.style.display = 'block';
+            });
+        });
+
+        // Toggle User Status
+        function toggleUserStatus(row) {
+            const statusCell = row.querySelector('td:nth-child(5)');
+            const currentStatus = statusCell.textContent;
+            
+            if (currentStatus === 'Ativo') {
+                statusCell.textContent = 'Suspenso';
+                statusCell.style.color = '#ff6666';
+            } else {
+                statusCell.textContent = 'Ativo';
+                statusCell.style.color = 'var(--neon-green)';
+            }
+            
+            // Update details panel if open
+            if (selectedUser === row) {
+                document.getElementById('detailStatus').textContent = statusCell.textContent;
+            }
+        }
+
+        // Small action buttons in table
+        const smallBtns = document.querySelectorAll('.small-btn');
+        smallBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const row = btn.closest('.user-row');
+                if (btn.dataset.action === 'toggle-status') {
+                    toggleUserStatus(row);
+                }
+            });
+        });
+
+        // Detail panel buttons
+        const toggleStatusBtn = document.getElementById('toggleStatusBtn');
+        const togglePremiumBtn = document.getElementById('togglePremiumBtn');
+
+        if (toggleStatusBtn) {
+            toggleStatusBtn.addEventListener('click', () => {
+                if (selectedUser) {
+                    toggleUserStatus(selectedUser);
+                }
+            });
+        }
+
+        if (togglePremiumBtn) {
+            togglePremiumBtn.addEventListener('click', () => {
+                if (selectedUser) {
+                    const planCell = selectedUser.querySelector('td:nth-child(4)');
+                    const currentPlan = planCell.textContent;
+                    
+                    if (currentPlan === 'Básico') {
+                        planCell.textContent = 'Pro';
+                    } else if (currentPlan === 'Pro') {
+                        planCell.textContent = 'Elite';
+                    } else {
+                        planCell.textContent = 'Básico';
+                    }
+                    
+                    // Update details panel
+                    document.getElementById('detailPlan').textContent = planCell.textContent;
+                }
+            });
+        }
+
+        // Discount Slider
+        const discountSlider = document.getElementById('discountSlider');
+        const discountValue = document.getElementById('discountValue');
+        const finalPrice = document.getElementById('finalPrice');
+        if (discountSlider) {
+            discountSlider.addEventListener('input', () => {
+                const discount = parseInt(discountSlider.value);
+                discountValue.textContent = discount + '%';
+                const originalPrice = 19.90;
+                const discountedPrice = originalPrice - (originalPrice * discount / 100);
+                finalPrice.textContent = 'R$ ' + discountedPrice.toFixed(2).replace('.', ',');
+            });
+        }
+
+        // Duration Buttons
+        const durationBtns = document.querySelectorAll('.duration-btn');
+        const selectedDurationEl = document.getElementById('selectedDuration');
+        durationBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                durationBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const days = btn.dataset.days;
+                if (days) {
+                    selectedDurationEl.textContent = `Selecionado: ${days} dia${days > 1 ? 's' : ''} de Premium gratuito`;
+                }
+            });
+        });
+
+        // Nexus AI Chat Functionality
+        const chatButton = document.getElementById('chatButton');
+        const chatContainer = document.getElementById('chatContainer');
+        const chatClose = document.getElementById('chatClose');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+        const chatMessages = document.getElementById('chatMessages');
+        const quickButtons = document.querySelectorAll('.quick-btn');
+
+        // Chat toggle
+        chatButton.addEventListener('click', () => {
+            chatContainer.style.display = 'flex';
+        });
+
+        chatClose.addEventListener('click', () => {
+            chatContainer.style.display = 'none';
+        });
+
+        // Knowledge base for Nexus AI
+        const knowledgeBase = {
+            greetings: {
+                patterns: ['olá', 'oi', 'ola', 'bom dia', 'boa tarde', 'boa noite', 'e ai', 'hey'],
+                response: 'Olá! Como posso ajudar você hoje com o Nexus Booster? 😊'
+            },
+            creator: {
+                patterns: ['quem é o criador', 'quem criou', 'quem fez o site', 'criadores', 'autor do site', 'desenvolvedor', 'desenvolvedores', 'quem é o dono', 'dono do site'],
+                response: 'Os criadores do site são Enzo Gabriel Morales Herrera e Zarb! 😊'
+            },
+            whatIs: {
+                patterns: ['o que é', 'oque é', 'o que e', 'oque e', 'o que é o nexus', 'nexus booster o que é', 'o que faz', 'para que serve'],
+                response: 'O Nexus Booster é um software de otimização desenvolvido para melhorar o desempenho do computador durante jogos, ajudando a reduzir processos desnecessários e oferecendo uma experiência mais estável.'
+            },
+            install: {
+                patterns: ['como instalar', 'instalar', 'instalação', 'baixar e instalar', 'como faço para instalar', 'instala'],
+                response: 'Após baixar o Nexus Booster, execute o instalador e siga as instruções exibidas na tela. O processo normalmente leva menos de um minuto.'
+            },
+            download: {
+                patterns: ['baixar', 'download', 'onde baixar', 'como baixar'],
+                response: 'Você pode baixar o Nexus Booster diretamente do nosso site oficial. Clique no botão "Baixar Agora" na página inicial para começar o download.'
+            },
+            plans: {
+                patterns: ['planos', 'premium', 'preço', 'preco', 'valor', 'qual plano', 'plano pro', 'plano elite', 'plano basico', 'quais são os planos'],
+                response: 'Oferecemos três planos:\n\n• **Básico**: R$ 5,99/mês - 30 dias grátis sem cartão de crédito\n• **Pro**: R$ 19,90/mês - Otimização avançada + suporte prioritário\n• **Elite**: R$ 49,90/mês - Todos os recursos + acesso antecipado a atualizações'
+            },
+            paymentIssues: {
+                patterns: ['pagamento', 'problema de pagamento', 'não consigo pagar', 'pagamento não foi', 'erro no pagamento', 'cobrança', 'cartão'],
+                response: 'Lamento que esteja com problemas de pagamento. Verifique se os dados do cartão estão corretos e se há limite disponível. Se o problema persistir, posso encaminhá-lo ao suporte humano.'
+            },
+            premiumNotWorking: {
+                patterns: ['premium não apareceu', 'meu premium não', 'não apareceu premium', 'não consigo acessar premium', 'premium não ativou', 'não recebi premium'],
+                response: 'Entendo. Verifique se você está utilizando a mesma conta usada na compra. Caso o problema continue, posso encaminhá-lo ao suporte humano.'
+            },
+            gameCrashing: {
+                patterns: ['jogo está travando', 'trava', 'travando', 'crash', 'crashando', 'fecha sozinho', 'jogo fecha'],
+                response: 'Se seu jogo está travando, tente:\n\n1. Feche programas desnecessários\n2. Ative o modo "Jogo" no Nexus Booster\n3. Verifique se seus drivers estão atualizados\n\nSe o problema persistir, é melhor conversar com nosso suporte humano.'
+            },
+            support: {
+                patterns: ['falar com suporte', 'suporte humano', 'atendente humano', 'quero falar com alguém', 'contato', 'whatsapp', 'telefone'],
+                response: 'Claro! Você pode entrar em contato com nosso suporte humano:\n\n**WhatsApp**: +55 19 98286-8927\n\nNossa equipe terá prazer em ajudar você!'
+            },
+            refund: {
+                patterns: ['reembolso', 'devolver dinheiro', 'quero reembolso', 'politica de reembolso', 'política de reembolso'],
+                response: 'Nossa política de reembolso permite solicitar o reembolso em até 7 dias após a compra. Se você deseja solicitar, entre em contato com nosso suporte humano.'
+            },
+            features: {
+                patterns: ['recursos', 'funcionalidades', 'o que ele faz', 'quais recursos', 'benefícios'],
+                response: 'O Nexus Booster oferece:\n\n• Otimização de desempenho em tempo real\n• Gerenciamento de processos\n• Modo Jogo dedicado\n• Monitoramento de sistema\n• Atualizações automáticas'
+            },
+            compatibility: {
+                patterns: ['compatibilidade', 'compativel', 'compatível', 'qual windows', 'windows 10', 'windows 11', 'funciona em'],
+                response: 'O Nexus Booster é compatível com Windows 10 e Windows 11 (64 bits). Recomendamos pelo menos 4GB de RAM.'
+            },
+            faq: {
+                patterns: ['perguntas frequentes', 'faq', 'duvidas frequentes', 'dúvidas frequentes', 'perguntas'],
+                response: 'Aqui estão algumas perguntas frequentes:\n\n• Como instalar? Baixe e execute o instalador\n• Qual o preço? De R$19,90 a R$49,90/mês\n• Tem reembolso? Sim, em até 7 dias\n\nPrecisa de mais ajuda?'
+            },
+            thanks: {
+                patterns: ['obrigado', 'obrigada', 'valeu', 'brigado', 'brigada', 'agradeço'],
+                response: 'De nada! Fico feliz em ajudar! Se precisar de mais alguma coisa, é só pedir. 😊'
+            }
+        };
+
+        // Human support fallback message
+        const humanSupportMessage = 'Não consegui resolver completamente sua solicitação. Entre em contato com nosso suporte humano:\n\n**WhatsApp**: +55 19 98286-8927\n\nNossa equipe poderá analisar seu caso com mais detalhes.';
+
+        // Find best matching response
+        function getNexusResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            for (const [key, data] of Object.entries(knowledgeBase)) {
+                for (const pattern of data.patterns) {
+                    if (lowerMessage.includes(pattern)) {
+                        return data.response;
+                    }
+                }
+            }
+            
+            return humanSupportMessage;
+        }
+
+        // Add message to chat
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user-message' : 'nexus-message'}`;
+            
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            
+            if (isUser) {
+                avatar.textContent = 'V';
+            } else {
+                avatar.innerHTML = `
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="5" y="3" width="14" height="14" rx="3" fill="#39FF14"/>
+                        <circle cx="9" cy="8" r="2" fill="#0a0a0a"/>
+                        <circle cx="15" cy="8" r="2" fill="#0a0a0a"/>
+                        <path d="M8 13 Q12 17 16 13" stroke="#0a0a0a" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        <rect x="11" y="17" width="2" height="2" rx="1" fill="#39FF14"/>
+                        <circle cx="12" cy="1" r="1" fill="#39FF14"/>
+                        <rect x="11.5" y="1" width="1" height="2" fill="#39FF14"/>
+                    </svg>
+                `;
+            }
+            
+            const content = document.createElement('div');
+            content.className = 'message-content';
+            
+            const paragraphs = text.split('\n');
+            paragraphs.forEach(para => {
+                if (para.trim()) {
+                    const p = document.createElement('p');
+                    p.textContent = para.trim();
+                    content.appendChild(p);
+                }
+            });
+            
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(content);
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Show typing indicator
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message nexus-message';
+            typingDiv.id = 'typingIndicator';
+            
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            avatar.innerHTML = `
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="6" y="4" width="12" height="12" rx="2" fill="#39FF14"/>
+                    <rect x="4" y="8" width="2" height="4" rx="1" fill="#39FF14"/>
+                    <rect x="18" y="8" width="2" height="4" rx="1" fill="#39FF14"/>
+                    <circle cx="9" cy="9" r="1.5" fill="#0a0a0a"/>
+                    <circle cx="15" cy="9" r="1.5" fill="#0a0a0a"/>
+                    <rect x="9" y="12" width="6" height="2" rx="1" fill="#0a0a0a"/>
+                    <rect x="10" y="16" width="4" height="2" rx="1" fill="#39FF14"/>
+                    <circle cx="12" cy="2" r="1" fill="#39FF14"/>
+                    <rect x="11.5" y="2" width="1" height="2" fill="#39FF14"/>
+                </svg>
+            `;
+            
+            const content = document.createElement('div');
+            content.className = 'message-content';
+            
+            const typingIndicator = document.createElement('div');
+            typingIndicator.className = 'typing-indicator';
+            
+            for (let i = 0; i < 3; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'typing-dot';
+                typingIndicator.appendChild(dot);
+            }
+            
+            content.appendChild(typingIndicator);
+            typingDiv.appendChild(avatar);
+            typingDiv.appendChild(content);
+            
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Remove typing indicator
+        function removeTypingIndicator() {
+            const typing = document.getElementById('typingIndicator');
+            if (typing) typing.remove();
+        }
+
+        // Send message
+        function sendMessage(text) {
+            if (!text.trim()) return;
+            
+            addMessage(text, true);
+            chatInput.value = '';
+            
+            showTypingIndicator();
+            
+            setTimeout(() => {
+                removeTypingIndicator();
+                const response = getNexusResponse(text);
+                addMessage(response);
+            }, 1000 + Math.random() * 1000);
+        }
+
+        // Event listeners
+        chatSend.addEventListener('click', () => {
+            sendMessage(chatInput.value);
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage(chatInput.value);
+            }
+        });
+
+        quickButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const question = btn.dataset.question;
+                sendMessage(question);
+            });
+        });
+        
+        // Nexus Booster Auth System - Complete Flow
+        const authModal = document.getElementById('authModal');
+        const openLoginBtn = document.getElementById('openLoginBtn');
+        const authCloseBtn = document.getElementById('authCloseBtn');
+        const loginView = document.getElementById('loginView');
+        const signupView = document.getElementById('signupView');
+        const verifyView = document.getElementById('verifyView');
+        const forgotView = document.getElementById('forgotView');
+        const resetView = document.getElementById('resetView');
+        const goToSignupBtn = document.getElementById('goToSignupBtn');
+        const goToLoginBtn = document.getElementById('goToLoginBtn');
+        const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
+        const backToLoginBtn = document.getElementById('backToLoginBtn');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const forgotForm = document.getElementById('forgotForm');
+        const resetForm = document.getElementById('resetForm');
+        const verifyBtn = document.getElementById('verifyBtn');
+        const resendCodeBtn = document.getElementById('resendCodeBtn');
+        
+        // Google OAuth Elements
+        const googleLoginBtn = document.getElementById('googleLoginBtn');
+        const googleSignupBtn = document.getElementById('googleSignupBtn');
+        const googleOAuthModal = document.getElementById('googleOAuthModal');
+        const selectGoogleAccount = document.getElementById('selectGoogleAccount');
+        
+        let currentVerificationCode = '';
+        let pendingUser = null;
+        let isLoggedIn = false;
+        let currentUser = null;
+        let authMode = 'signup'; // 'signup' or 'login'
+        let pendingDownload = false;
+        
+        // Initialize - Check for existing session
+        function updateHeaderForLoggedIn() {
+            if (currentUser) {
+                document.getElementById('userGreeting').style.display = 'block';
+                document.getElementById('userNameDisplay').textContent = currentUser.name;
+                document.getElementById('logoutBtn').style.display = 'block';
+                document.getElementById('openLoginBtn').style.display = 'none';
+            } else {
+                document.getElementById('userGreeting').style.display = 'none';
+                document.getElementById('logoutBtn').style.display = 'none';
+                document.getElementById('openLoginBtn').style.display = 'block';
+            }
+        }
+
+        function checkExistingSession() {
+            const savedUser = localStorage.getItem('nexus_user');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                isLoggedIn = true;
+                updateHeaderForLoggedIn();
+            }
+        }
+        
+        // Modal toggle functions
+        openLoginBtn.addEventListener('click', () => {
+            showLoginView();
+            authModal.style.display = 'flex';
+        });
+        
+        authCloseBtn.addEventListener('click', () => {
+            authModal.style.display = 'none';
+        });
+        
+        authModal.addEventListener('click', (e) => {
+            if (e.target === authModal) {
+                authModal.style.display = 'none';
+            }
+        });
+        
+        // View switching functions
+        function showLoginView() {
+            hideAllViews();
+            loginView.style.display = 'block';
+        }
+        
+        function showSignupView() {
+            hideAllViews();
+            signupView.style.display = 'block';
+        }
+        
+        function showVerifyView() {
+            hideAllViews();
+            // Clear code inputs
+            const inputs = verifyView.querySelectorAll('.code-input');
+            inputs.forEach(input => input.value = '');
+            inputs[0].focus();
+            verifyView.style.display = 'block';
+        }
+        
+        function showForgotView() {
+            hideAllViews();
+            forgotView.style.display = 'block';
+        }
+        
+        function showResetView() {
+            hideAllViews();
+            // Clear code inputs
+            const inputs = resetView.querySelectorAll('.code-input');
+            inputs.forEach(input => input.value = '');
+            inputs[0].focus();
+            resetView.style.display = 'block';
+        }
+        
+        function hideAllViews() {
+            loginView.style.display = 'none';
+            signupView.style.display = 'none';
+            verifyView.style.display = 'none';
+            forgotView.style.display = 'none';
+            resetView.style.display = 'none';
+        }
+        
+        // Button listeners
+        goToSignupBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSignupView();
+        });
+        
+        goToLoginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showLoginView();
+        });
+        
+        forgotPasswordBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showForgotView();
+        });
+        
+        backToLoginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showLoginView();
+        });
+        
+        // Generate 6-digit code
+        function generateCode() {
+            return Math.floor(100000 + Math.random() * 900000).toString();
+        }
+        
+        // Send verification code (simulated)
+        function sendVerificationCode(email, purpose = 'signup') {
+            currentVerificationCode = generateCode();
+            const purposeText = purpose === 'signup' ? 'verificação' : (purpose === 'login' ? 'login' : 'recuperação de senha');
+            console.log(`${purposeText.toUpperCase()} Code for ${email}:`, currentVerificationCode);
+            alert(`Código de ${purposeText} enviado para ${email} (para teste: ${currentVerificationCode})`);
+        }
+        
+        // Setup code inputs auto-move
+        function setupCodeInputs(container) {
+            const inputs = container.querySelectorAll('.code-input');
+            inputs.forEach((input, index) => {
+                input.addEventListener('input', () => {
+                    if (input.value.length === 1 && index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                });
+                
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && input.value === '' && index > 0) {
+                        inputs[index - 1].focus();
+                    }
+                });
+            });
+        }
+        
+        setupCodeInputs(verifyView);
+        setupCodeInputs(resetView);
+        
+        // Get code from inputs
+        function getCodeFromInputs(container) {
+            const inputs = container.querySelectorAll('.code-input');
+            return Array.from(inputs).map(i => i.value).join('');
+        }
+        
+        // --- GOOGLE OAUTH FLOW ---
+        function openGoogleOAuth() {
+            authMode = 'signup'; // Default to signup, check later if user exists
+            
+            // Simulate opening Google OAuth popup (looks like accounts.google.com)
+            const popup = window.open('', '_blank', 'width=800,height=800,left=' + (window.innerWidth - 800) / 2 + ',top=' + (window.innerHeight - 800) / 2);
+            if (!popup) {
+                alert('Por favor, habilite popups para continuar com o login do Google!');
+                return;
+            }
+            
+            // Create realistic Google account chooser page
+            popup.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Escolha uma Conta do Google</title>
+                    <style>
+                        * {
+                            margin: 0;
+                            padding: 0;
+                            box-sizing: border-box;
+                        }
+                        body {
+                            font-family: 'Google Sans', 'Product Sans', Arial, sans-serif;
+                            background: #ffffff;
+                            color: #202124;
+                        }
+                        .container {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            min-height: 100vh;
+                            padding: 48px 40px 36px;
+                        }
+                        .logo {
+                            margin-bottom: 16px;
+                        }
+                        .header-text {
+                            font-size: 24px;
+                            font-weight: 400;
+                            margin-bottom: 8px;
+                            color: #202124;
+                        }
+                        .subtext {
+                            font-size: 16px;
+                            color: #5f6368;
+                            margin-bottom: 36px;
+                        }
+                        .account-list {
+                            width: 100%;
+                            max-width: 450px;
+                            margin-bottom: 24px;
+                        }
+                        .account-item {
+                            display: flex;
+                            align-items: center;
+                            padding: 16px;
+                            border: 1px solid #dadce0;
+                            border-radius: 8px;
+                            margin-bottom: 12px;
+                            cursor: pointer;
+                            transition: all 0.2s ease;
+                        }
+                        .account-item:hover {
+                            background: #f8f9fa;
+                        }
+                        .account-item:focus {
+                            outline: 2px solid #1a73e8;
+                        }
+                        .account-avatar {
+                            width: 48px;
+                            height: 48px;
+                            border-radius: 50%;
+                            background: #e8f0fe;
+                            color: #1a73e8;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 20px;
+                            font-weight: 500;
+                            margin-right: 16px;
+                        }
+                        .account-info {
+                            flex-grow: 1;
+                            text-align: left;
+                        }
+                        .account-name {
+                            font-size: 16px;
+                            color: #202124;
+                            margin: 0;
+                        }
+                        .account-email {
+                            font-size: 14px;
+                            color: #5f6368;
+                            margin: 4px 0 0;
+                        }
+                        .add-account {
+                            display: flex;
+                            align-items: center;
+                            padding: 16px;
+                            border: 1px solid #dadce0;
+                            border-radius: 8px;
+                            margin-bottom: 12px;
+                            cursor: pointer;
+                        }
+                        .add-account:hover {
+                            background: #f8f9fa;
+                        }
+                        .add-avatar {
+                            width: 48px;
+                            height: 48px;
+                            border-radius: 50%;
+                            background: #f1f3f4;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-right: 16px;
+                        }
+                        .add-text {
+                            color: #1a73e8;
+                            font-size: 16px;
+                        }
+                        .footer {
+                            display: flex;
+                            flex-direction: column;
+                            width: 100%;
+                            max-width: 450px;
+                            margin-top: auto;
+                            padding-top: 24px;
+                        }
+                        .footer-links {
+                            display: flex;
+                            justify-content: space-between;
+                            font-size: 12px;
+                            color: #5f6368;
+                        }
+                        .footer-links a {
+                            color: #5f6368;
+                            text-decoration: none;
+                        }
+                        .footer-links a:hover {
+                            text-decoration: underline;
+                        }
+                        .footer-lang {
+                            margin-top: 12px;
+                            font-size: 12px;
+                            color: #5f6368;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <div class="logo">
+                            <svg width="75" height="24" viewBox="0 0 75 24" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="#4285F4" d="M9.5 20.5v-17h17v17h-17z"/>
+                                <path fill="#34A853" d="M67 6v4h6v10h-6z"/>
+                                <path fill="#FBBC05" d="M45 20v-17h-6v17h6z"/>
+                                <path fill="#EA4335" d="M24 20v-6h-6v-4h6v-7h6v7h6v4h-6v7h-6z"/>
+                            </svg>
+                        </div>
+                        
+                        <h1 class="header-text">Escolha uma conta</h1>
+                        <p class="subtext">para continuar com Nexus Booster</p>
+                        
+                        <div class="account-list">
+                            <div class="account-item" data-email="usuario@gmail.com" data-name="Usuário">
+                                <div class="account-avatar">U</div>
+                                <div class="account-info">
+                                    <p class="account-name">Usuário</p>
+                                    <p class="account-email">usuario@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="account-item" data-email="jogador.pro@gmail.com" data-name="Jogador Pro">
+                                <div class="account-avatar">J</div>
+                                <div class="account-info">
+                                    <p class="account-name">Jogador Pro</p>
+                                    <p class="account-email">jogador.pro@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="add-account" id="customAccount">
+                                <div class="add-avatar">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="#5f6368"/>
+                                    </svg>
+                                </div>
+                                <div class="add-text">Usar outra conta</div>
+                            </div>
+                        </div>
+                        
+                        <div class="footer">
+                            <div class="footer-links">
+                                <a href="#">Ajuda</a>
+                                <a href="#">Privacidade</a>
+                                <a href="#">Termos</a>
+                            </div>
+                            <div class="footer-lang">Português (Brasil)</div>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.querySelectorAll('.account-item').forEach(account => {
+                            account.addEventListener('click', () => {
+                                window.opener.postMessage({ 
+                                    type: 'googleAccount', 
+                                    email: account.getAttribute('data-email'),
+                                    name: account.getAttribute('data-name')
+                                }, '*');
+                            });
+                        });
+
+                        document.getElementById('customAccount').addEventListener('click', () => {
+                            window.opener.postMessage({ type: 'googleCustomAccount' }, '*');
+                        });
+                    <\/script>
+                </body>
+                </html>
+            `);
+        }
+        
+        googleLoginBtn.addEventListener('click', openGoogleOAuth);
+        googleSignupBtn.addEventListener('click', openGoogleOAuth);
+        
+        function handleGoogleAccountSelect(email, name) {
+            // Check if user already exists
+            const existingUsers = JSON.parse(localStorage.getItem('nexus_users') || '[]');
+            const existingUser = existingUsers.find(u => u.email === email);
+            
+            if (existingUser) {
+                // Login existing user
+                authMode = 'login';
+                pendingUser = existingUser;
+                sendVerificationCode(email, 'login');
+                showVerifyView();
+            } else {
+                // Signup new user
+                authMode = 'signup';
+                pendingUser = {
+                    id: Date.now().toString(),
+                    name: name,
+                    email: email,
+                    password: btoa('google-oauth'), // Mark as Google account
+                    plan: 'Básico',
+                    verified: false,
+                    createdAt: new Date().toISOString(),
+                    expiryDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+                    downloads: 0,
+                    isGoogleAccount: true
+                };
+                sendVerificationCode(email, 'signup');
+                showVerifyView();
+            }
+        }
+        
+        // Listen for messages from the Google OAuth popup
+        window.addEventListener('message', (event) => {
+            if (event.data.type === 'googleAccount') {
+                handleGoogleAccountSelect(event.data.email, event.data.name);
+            } else if (event.data.type === 'googleCustomAccount') {
+                const email = prompt('Por favor, insira seu email do Google:');
+                if (!email) return;
+                const name = prompt('Por favor, insira seu nome completo:') || 'Usuário Google';
+                handleGoogleAccountSelect(email, name);
+            }
+        });
+        
+        // --- SIGNUP FLOW ---
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+            
+            // Basic validation
+            if (password !== confirmPassword) {
+                alert('As senhas não coincidem!');
+                return;
+            }
+            
+            if (password.length < 6) {
+                alert('A senha deve ter pelo menos 6 caracteres!');
+                return;
+            }
+            
+            // Check if user exists
+            const existingUsers = JSON.parse(localStorage.getItem('nexus_users') || '[]');
+            const userExists = existingUsers.some(u => u.email === email);
+            if (userExists) {
+                alert('Este email já está cadastrado! Faça login.');
+                showLoginView();
+                return;
+            }
+            
+            // Create user object
+            pendingUser = {
+                id: Date.now().toString(),
+                name: name,
+                email: email,
+                password: btoa(password),
+                plan: 'Básico',
+                verified: false,
+                createdAt: new Date().toISOString(),
+                expiryDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+                downloads: 0,
+                isGoogleAccount: false
+            };
+            
+            authMode = 'signup';
+            sendVerificationCode(email, 'signup');
+            showVerifyView();
+        });
+        
+        // --- LOGIN FLOW ---
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            const existingUsers = JSON.parse(localStorage.getItem('nexus_users') || '[]');
+            const user = existingUsers.find(u => u.email === email);
+            
+            if (!user) {
+                alert('Este email não está cadastrado!');
+                return;
+            }
+            
+            if (user.isGoogleAccount) {
+                alert('Esta conta foi criada com o Google. Por favor, use o botão "CONTINUAR COM GOOGLE".');
+                return;
+            }
+            
+            if (user.password !== btoa(password)) {
+                alert('Senha incorreta!');
+                return;
+            }
+            
+            // Send verification code for login
+            pendingUser = user;
+            authMode = 'login';
+            sendVerificationCode(email, 'login');
+            showVerifyView();
+        });
+        
+        // --- VERIFICATION FLOW ---
+        verifyBtn.addEventListener('click', () => {
+            const enteredCode = getCodeFromInputs(verifyView);
+            
+            if (enteredCode === currentVerificationCode) {
+                if (authMode === 'signup') {
+                    // Save new user
+                    const existingUsers = JSON.parse(localStorage.getItem('nexus_users') || '[]');
+                    pendingUser.verified = true;
+                    existingUsers.push(pendingUser);
+                    localStorage.setItem('nexus_users', JSON.stringify(existingUsers));
+                }
+                
+                // Login user
+                currentUser = pendingUser;
+                localStorage.setItem('nexus_user', JSON.stringify(currentUser));
+                isLoggedIn = true;
+                
+                authModal.style.display = 'none';
+                updateHeaderForLoggedIn();
+
+                // Check if pending download
+                if (pendingDownload) {
+                    pendingDownload = false;
+                    window.location.href = 'download.html';
+                }
+            } else {
+                alert('Código inválido!');
+            }
+        });
+        
+        resendCodeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (pendingUser && pendingUser.email) {
+                sendVerificationCode(pendingUser.email, authMode === 'signup' ? 'signup' : 'login');
+            }
+        });
+        
+        // --- FORGOT/RESET PASSWORD FLOW ---
+        forgotForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('forgotEmail').value;
+            
+            const existingUsers = JSON.parse(localStorage.getItem('nexus_users') || '[]');
+            const user = existingUsers.find(u => u.email === email);
+            
+            if (!user) {
+                alert('Este email não está cadastrado!');
+                return;
+            }
+            
+            pendingUser = user;
+            sendVerificationCode(email, 'recuperação de senha');
+            showResetView();
+        });
+        
+        resetForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const enteredCode = getCodeFromInputs(resetView);
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+            
+            if (enteredCode !== currentVerificationCode) {
+                alert('Código inválido!');
+                return;
+            }
+            
+            if (newPassword !== confirmNewPassword) {
+                alert('As senhas não coincidem!');
+                return;
+            }
+            
+            if (newPassword.length < 6) {
+                alert('A senha deve ter pelo menos 6 caracteres!');
+                return;
+            }
+            
+            // Update password
+            let existingUsers = JSON.parse(localStorage.getItem('nexus_users') || '[]');
+            existingUsers = existingUsers.map(u => {
+                if (u.id === pendingUser.id) {
+                    u.password = btoa(newPassword);
+                }
+                return u;
+            });
+            localStorage.setItem('nexus_users', JSON.stringify(existingUsers));
+            
+            alert('Senha alterada com sucesso! Faça login.');
+            showLoginView();
+        });
+        
+
+        
+        // Logout button in header
+        const logoutBtn = document.getElementById('logoutBtn');
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('nexus_user');
+            currentUser = null;
+            isLoggedIn = false;
+            updateHeaderForLoggedIn();
+        });
+        
+        // Check existing session on load
+        checkExistingSession();
+
+        // --- DOWNLOAD FLOW ---
+        function handleDownloadButtonClick() {
+            // Record click
+            const stats = JSON.parse(localStorage.getItem('nexusStats') || JSON.stringify({
+                totalClicks: 0, downloadsStarted: 0, downloadsCompleted: 0
+            }));
+            stats.totalClicks++;
+            localStorage.setItem('nexusStats', JSON.stringify(stats));
+
+            if (currentUser) {
+                // Already logged in - go to download page
+                window.location.href = 'download.html';
+            } else {
+                // Not logged in - set pending and open login
+                pendingDownload = true;
+                showLoginView();
+                authModal.style.display = 'flex';
+            }
+        }
+
+        // Add click listeners to all relevant buttons
+        document.querySelectorAll('.btn-small, .btn-primary, .software-btn, .plan-btn, [data-action="download"]').forEach(btn => {
+            if (!btn.id?.includes('auth') && !btn.id?.includes('login') && !btn.id?.includes('logout')) {
+                btn.addEventListener('click', handleDownloadButtonClick);
+            }
+        });
+
+
     </script>
 </body>
 </html>
